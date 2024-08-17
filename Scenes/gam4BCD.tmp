@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://diuelwnsrcp20"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_b61gh"]
+[ext_resource type="Texture2D" uid="uid://dqttn0paaadtu" path="res://icon.svg" id="1_ew7as"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_b61gh")
+
+[node name="Line2D" type="Line2D" parent="Player"]
+points = PackedVector2Array(0, 0)
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(315, 183)
+scale = Vector2(0.320313, 0.320313)
+texture = ExtResource("1_ew7as")
+metadata/_edit_group_ = true

@@ -1,0 +1,417 @@
+[gd_scene load_steps=28 format=3 uid="uid://diuelwnsrcp20"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_d7oc3"]
+[ext_resource type="Texture2D" uid="uid://dqttn0paaadtu" path="res://icon.svg" id="2_aurcb"]
+[ext_resource type="Texture2D" uid="uid://bdhi7ixgoynid" path="res://Textures/frog_player_sheet.png" id="2_maq7v"]
+[ext_resource type="Script" path="res://Scripts/edible_object.gd" id="3_cebpb"]
+
+[sub_resource type="Animation" id="Animation_26hcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Line2D:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_2aypl"]
+resource_name = "eat_back"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Line2D:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_lcl0w"]
+resource_name = "eat_front"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Line2D:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ail14"]
+resource_name = "eat_side"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_dd7d1"]
+resource_name = "idle_back"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_utwd5"]
+resource_name = "idle_front"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v3dud"]
+resource_name = "idle_side"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ito3"]
+_data = {
+"RESET": SubResource("Animation_26hcc"),
+"eat_back": SubResource("Animation_2aypl"),
+"eat_front": SubResource("Animation_lcl0w"),
+"eat_side": SubResource("Animation_ail14"),
+"idle_back": SubResource("Animation_dd7d1"),
+"idle_front": SubResource("Animation_utwd5"),
+"idle_side": SubResource("Animation_v3dud")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3oc0c"]
+animation = &"eat_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_brmun"]
+animation = &"eat_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8olf2"]
+animation = &"eat_front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ac0qd"]
+animation = &"eat_back"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1fgvb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3oc0c")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_brmun")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_8olf2")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ac0qd")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xe74w"]
+animation = &"idle_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqu4q"]
+animation = &"idle_side"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l544t"]
+animation = &"idle_front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_73dol"]
+animation = &"idle_back"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2jxag"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_xe74w")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gqu4q")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_l544t")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_73dol")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bcsa5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_di2bd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ej4ye"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0fp3t"]
+states/Eat/node = SubResource("AnimationNodeBlendSpace2D_1fgvb")
+states/Eat/position = Vector2(544, 116)
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_2jxag")
+states/Idle/position = Vector2(380, 116)
+states/Start/position = Vector2(212, 116)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_bcsa5"), "Idle", "Eat", SubResource("AnimationNodeStateMachineTransition_di2bd"), "Eat", "Idle", SubResource("AnimationNodeStateMachineTransition_ej4ye")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri2fx"]
+size = Vector2(36, 36)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FrogPlayer" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(310, 170)
+script = ExtResource("1_d7oc3")
+
+[node name="Sprite2D" type="Sprite2D" parent="FrogPlayer"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_maq7v")
+flip_h = true
+hframes = 2
+vframes = 3
+
+[node name="Line2D" type="Line2D" parent="FrogPlayer"]
+z_index = -1
+position = Vector2(-12, 3)
+points = PackedVector2Array(0, 0)
+width = 7.0
+default_color = Color(1, 0.396078, 0.639216, 1)
+end_cap_mode = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="FrogPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_7ito3")
+}
+tree_root = SubResource("AnimationNodeStateMachine_0fp3t")
+parameters/Eat/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0.589172, 0.0353982)
+
+[node name="EdibleObject" type="StaticBody2D" parent="."]
+position = Vector2(158, 272)
+scale = Vector2(1.04222, 1.04222)
+input_pickable = true
+script = ExtResource("3_cebpb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[node name="EdibleObject5" type="StaticBody2D" parent="."]
+position = Vector2(72, 146)
+scale = Vector2(1.04222, 1.04222)
+input_pickable = true
+script = ExtResource("3_cebpb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject5"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject5"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[node name="EdibleObject6" type="StaticBody2D" parent="."]
+position = Vector2(328, 291)
+scale = Vector2(1.04222, 1.04222)
+input_pickable = true
+script = ExtResource("3_cebpb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject6"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject6"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[node name="EdibleObject2" type="StaticBody2D" parent="."]
+position = Vector2(202, 93)
+scale = Vector2(1.32, 1.32)
+input_pickable = true
+script = ExtResource("3_cebpb")
+frog_size_threshold = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject2"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject2"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[node name="EdibleObject3" type="StaticBody2D" parent="."]
+position = Vector2(448, 280)
+scale = Vector2(1.72, 1.72)
+input_pickable = true
+script = ExtResource("3_cebpb")
+frog_size_threshold = 3
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject3"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject3"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[node name="EdibleObject4" type="StaticBody2D" parent="."]
+position = Vector2(428, 70)
+scale = Vector2(2.08, 2.08)
+input_pickable = true
+script = ExtResource("3_cebpb")
+frog_size_threshold = 4
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="EdibleObject4"]
+position = Vector2(1.66893e-06, 1.66893e-06)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("2_aurcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdibleObject4"]
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[connection signal="mouse_entered" from="EdibleObject" to="EdibleObject" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject" to="EdibleObject" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="EdibleObject5" to="EdibleObject5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject5" to="EdibleObject5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="EdibleObject6" to="EdibleObject6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject6" to="EdibleObject6" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="EdibleObject2" to="EdibleObject2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject2" to="EdibleObject2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="EdibleObject3" to="EdibleObject3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject3" to="EdibleObject3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="EdibleObject4" to="EdibleObject4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EdibleObject4" to="EdibleObject4" method="_on_mouse_exited"]
