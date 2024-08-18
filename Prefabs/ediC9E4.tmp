@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckm05o2elihja"]
+
+[ext_resource type="Script" path="res://Scripts/edible_object.gd" id="1_327ca"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="2_ffrjq"]
+[ext_resource type="Texture2D" uid="uid://deglowsqpk6f8" path="res://Textures/bush1.png" id="3_dtu5a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xu4kc"]
+shader = ExtResource("2_ffrjq")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri2fx"]
+size = Vector2(27, 25)
+
+[node name="EdibleObject" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_327ca")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_xu4kc")
+position = Vector2(-2.80142e-06, -6.85453e-07)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("3_dtu5a")
+
+[node name="EatCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_ri2fx")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
