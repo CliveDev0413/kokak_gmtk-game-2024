@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://chiowgyjo6xwt"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_x1vmw"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_x1vmw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="EatArea" type="Area2D" parent="."]
+
+[node name="EatCollision" type="CollisionShape2D" parent="EatArea"]
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+
+[connection signal="mouse_entered" from="EatArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EatArea" to="." method="_on_mouse_exited"]

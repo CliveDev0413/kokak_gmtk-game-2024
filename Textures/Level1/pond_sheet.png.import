@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpcr1qo7rbea"
-path="res://.godot/imported/worm1.png-635a241461327a929ec81a49f4edb207.ctex"
+uid="uid://d1xr61kec1qob"
+path="res://.godot/imported/pond_sheet.png-1112d9867f3d13fb5b3719e09cf21fee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/worm1.png"
-dest_files=["res://.godot/imported/worm1.png-635a241461327a929ec81a49f4edb207.ctex"]
+source_file="res://Textures/Level1/pond_sheet.png"
+dest_files=["res://.godot/imported/pond_sheet.png-1112d9867f3d13fb5b3719e09cf21fee.ctex"]
 
 [params]
 

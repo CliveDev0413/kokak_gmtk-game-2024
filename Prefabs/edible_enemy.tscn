@@ -1,10 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckm05o2elihja"]
+[gd_scene load_steps=2 format=3 uid="uid://bmgt76sguqsij"]
 
-[ext_resource type="Script" path="res://Scripts/edible_object.gd" id="1_327ca"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ehj22"]
 
-[node name="EdibleObject" type="StaticBody2D"]
-script = ExtResource("1_327ca")
-metadata/_edit_group_ = true
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ehj22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -18,7 +17,5 @@ collision_mask = 0
 
 [node name="EatCollision" type="CollisionShape2D" parent="EatArea"]
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="EatArea" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="EatArea" to="." method="_on_mouse_exited"]

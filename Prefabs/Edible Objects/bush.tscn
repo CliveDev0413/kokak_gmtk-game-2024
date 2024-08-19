@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8c8fsi6lw73i"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_8sp0f"]
+[ext_resource type="Texture2D" uid="uid://d3grgfduf364m" path="res://Textures/Level1/bushes_sheet.png" id="2_3ud7q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvf5w"]
+radius = 14.0
+height = 58.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhtqx"]
+size = Vector2(59, 58)
+
+[node name="Bush" instance=ExtResource("1_8sp0f")]
+frog_size_threshold = 2
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3ud7q")
+hframes = 3
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gvf5w")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(1.5, -1)
+shape = SubResource("RectangleShape2D_rhtqx")

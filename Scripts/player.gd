@@ -15,12 +15,18 @@ var objects_eaten: int;
 var is_hovering_object: bool = false;
 
 func _process(delta: float) -> void:
-	animationTree.set("parameters/Idle/blend_position", get_frog_direction());
-	sprite.flip_h = get_global_mouse_position().x > sprite.global_position.x;
+	frog_animate();
 	
 	if Input.is_action_just_pressed("left_click") && !Global.is_frog_tongue_out:
 		release_tongue(delta);
 	
+	frog_jump();
+
+func frog_animate() -> void:
+	animationTree.set("parameters/Idle/blend_position", get_frog_direction());
+	sprite.flip_h = get_global_mouse_position().x > sprite.global_position.x;
+	
+func frog_jump() -> void:
 	var pos = get_global_mouse_position() - position;
 	if  pos.x < 100 and pos.x > -100 and pos.y < 100 and pos.y > -100:
 		
@@ -40,7 +46,7 @@ func _process(delta: float) -> void:
 	else:
 		Input.set_custom_mouse_cursor(null);
 	
-	move_and_slide();
+	move_and_collide(velocity);
 
 func release_tongue(delta: float) -> void:
 	var last_mouse_pos: Vector2 = get_local_mouse_position();
@@ -79,11 +85,13 @@ func retract_tongue(delta: float) -> void:
 func ate_object(object: Node2D) -> void:
 	objects_eaten += 1;
 	
+	object.queue_free();
+	
 	if objects_eaten % size_increase_threshold == 0:
 		frog_size += 1;
-		sprite.scale += Vector2(0.2, 0.2);
-	
-	object.queue_free();
+		scale += Vector2(0.2, 0.2);
+		size_increase_threshold += 2;
+		objects_eaten = 0;
 	pass;
 
 func get_frog_direction() -> Vector2:

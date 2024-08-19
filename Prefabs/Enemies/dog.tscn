@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dujrbos6engjt"]
+
+[ext_resource type="PackedScene" uid="uid://bmgt76sguqsij" path="res://Prefabs/edible_enemy.tscn" id="1_cpql0"]
+[ext_resource type="Texture2D" uid="uid://4x10pw1u0a3q" path="res://Textures/dog_enemy_sheet.png" id="2_2epsf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2vnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g7r7"]
+size = Vector2(41, 53)
+
+[node name="Dog" instance=ExtResource("1_cpql0")]
+frog_size_threshold = 3
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2epsf")
+hframes = 3
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(2, 17)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_y2vnu")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(-4.5, 0.5)
+shape = SubResource("RectangleShape2D_6g7r7")
