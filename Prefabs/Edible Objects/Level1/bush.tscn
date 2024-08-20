@@ -11,7 +11,7 @@ height = 58.0
 size = Vector2(59, 58)
 
 [node name="Bush" instance=ExtResource("1_8sp0f")]
-frog_size_threshold = 2
+frog_size_threshold = 3
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_3ud7q")

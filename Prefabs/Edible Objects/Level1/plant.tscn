@@ -10,7 +10,7 @@ radius = 10.198
 size = Vector2(22, 27)
 
 [node name="Plant" instance=ExtResource("1_0ahg2")]
-frog_size_threshold = 3
+frog_size_threshold = 2
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_o3dkn")

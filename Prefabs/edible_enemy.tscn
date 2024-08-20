@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmgt76sguqsij"]
+[gd_scene load_steps=3 format=3 uid="uid://bmgt76sguqsij"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ehj22"]
+[ext_resource type="PackedScene" uid="uid://n7jsemte2626" path="res://Overlaps/hitbox.tscn" id="2_js57b"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["edible_objects"]]
+y_sort_enabled = true
+collision_layer = 4
 script = ExtResource("1_ehj22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 
@@ -17,5 +19,11 @@ collision_mask = 0
 
 [node name="EatCollision" type="CollisionShape2D" parent="EatArea"]
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="Hitbox" parent="." groups=["edible_objects"] instance=ExtResource("2_js57b")]
+collision_mask = 16
+
 [connection signal="mouse_entered" from="EatArea" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="EatArea" to="." method="_on_mouse_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen"]

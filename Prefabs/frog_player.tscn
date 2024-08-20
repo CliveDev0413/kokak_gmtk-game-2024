@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cmwd6dgoyjbqj"]
+[gd_scene load_steps=33 format=3 uid="uid://cmwd6dgoyjbqj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1eshp"]
 [ext_resource type="Texture2D" uid="uid://bdhi7ixgoynid" path="res://Textures/frog_player_sheet.png" id="2_k820q"]
 [ext_resource type="Script" path="res://Scripts/camera_peak.gd" id="3_fhlyo"]
+[ext_resource type="PackedScene" uid="uid://b3qd3ntd8tc6r" path="res://Overlaps/hurtbox.tscn" id="4_ln3ql"]
 
 [sub_resource type="Animation" id="Animation_4fir5"]
 length = 0.001
@@ -53,6 +54,35 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_t1o0j"]
+resource_name = "dead"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -5), Vector2(0, 0), Vector2(0, -5), Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0xfg4"]
@@ -293,6 +323,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0ve0"]
 _data = {
 "RESET": SubResource("Animation_4fir5"),
+"dead": SubResource("Animation_t1o0j"),
 "eat_back": SubResource("Animation_0xfg4"),
 "eat_front": SubResource("Animation_vrwau"),
 "eat_left": SubResource("Animation_8fiiw"),
@@ -368,7 +399,12 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1jvw"]
 radius = 14.1911
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvqf0"]
+radius = 18.0
+
 [node name="FrogPlayer" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_1eshp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -388,7 +424,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_k820q")
 offset = Vector2(0, -2)
 hframes = 2
-vframes = 4
+vframes = 5
 
 [node name="Line2D" type="Line2D" parent="."]
 show_behind_parent = true
@@ -402,12 +438,24 @@ end_cap_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_fhlyo")
-dead_zone = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 position = Vector2(-1, 7)
 scale = Vector2(0.775134, 0.7)
 shape = SubResource("CircleShape2D_g1jvw")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_ln3ql")]
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+z_index = -1
+shape = SubResource("CircleShape2D_bvqf0")
+debug_color = Color(0.821107, 0.232709, 0.809222, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

@@ -4,38 +4,45 @@ extends Node2D
 @onready var outline_shader = preload("res://Shaders/outline.gdshader");
 
 var is_mouse_hovering: bool = false;
+var eaten:bool = false;
 
-func _process(delta: float) -> void:
-	if Global.frog.frog_size >= frog_size_threshold:
+var frog: CharacterBody2D;
+
+func _ready() -> void:
+	frog = get_tree().get_first_node_in_group("player");
+
+func _physics_process(delta: float) -> void:	
+	if frog.frog_size >= frog_size_threshold:
 		if Input.is_action_just_pressed("left_click") and is_mouse_hovering:
+			eaten = true;
 			await get_tree().create_timer(.3).timeout;
 			
 			var tween = get_tree().create_tween();
-			tween.tween_property(self, "position", Global.frog.sprite.global_position, .3);
+			tween.tween_property(self, "global_position", frog.sprite.global_position, .3);
 			
 			await get_tree().create_timer(.3).timeout;
 			
-			Global.frog.ate_object($".");
+			frog.ate_object($".");
 
 func _on_mouse_entered() -> void:
-	if Global.frog.frog_size < frog_size_threshold:
+	if frog.frog_size < frog_size_threshold:
 		return;
 		
 	var sprite = $Sprite2D;
 	
 	is_mouse_hovering = true;
-	Global.frog.is_hovering_object = true;
+	frog.is_hovering_object = true;
 	sprite.material = ShaderMaterial.new();
 	sprite.material.shader = outline_shader;
 
 func _on_mouse_exited() -> void:
-	if Global.frog.frog_size < frog_size_threshold:
+	if frog.frog_size < frog_size_threshold:
 		return;
 	
 	var sprite = $Sprite2D;
 	
 	is_mouse_hovering = false;
-	Global.frog.is_hovering_object = false;
+	frog.is_hovering_object = false;
 	
 	if sprite.material != null:
 		sprite.material.shader = outline_shader;

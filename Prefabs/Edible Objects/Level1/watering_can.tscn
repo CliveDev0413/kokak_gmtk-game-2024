@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl2ubghfgsay2"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_wguye"]
+[ext_resource type="Texture2D" uid="uid://b0db0l0faau0x" path="res://Textures/Level1/water_can.png" id="2_vujcg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrgux"]
+size = Vector2(19, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwpit"]
+size = Vector2(27, 29)
+
+[node name="WateringCan" instance=ExtResource("1_wguye")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_vujcg")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(3.5, 4)
+shape = SubResource("RectangleShape2D_nrgux")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_wwpit")
