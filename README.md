@@ -2,6 +2,7 @@
 
 Made in 96 hours for the GMTK Game Jam 2024!
 
+**Team**
 - Programming by Clive Dev
 - Art by DummyDoodlez
 - Art and Frog Voice Acting by LecheFran and 
