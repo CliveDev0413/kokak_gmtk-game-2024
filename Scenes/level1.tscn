@@ -1,8 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://diuelwnsrcp20"]
+[gd_scene load_steps=37 format=3 uid="uid://diuelwnsrcp20"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_ek6o4"]
 [ext_resource type="Texture2D" uid="uid://c1r10pq1dka1k" path="res://Textures/Level1/level1_bg.png" id="1_iowj5"]
+[ext_resource type="AudioStream" uid="uid://thwf2prh2hx4" path="res://Audio/Music/lvl1.ogg" id="2_4rnk3"]
 [ext_resource type="Texture2D" uid="uid://doav73v3fnpkc" path="res://Textures/Level1/level1_bg_grass.png" id="2_pwcbf"]
+[ext_resource type="AudioStream" uid="uid://jw2x2d8k65bv" path="res://Audio/SFX/pond.wav" id="3_82y5r"]
 [ext_resource type="Texture2D" uid="uid://bhx2getfpi6h" path="res://Textures/Level1/level1_clouds.png" id="3_toagl"]
 [ext_resource type="Texture2D" uid="uid://dn74k60q2vf6c" path="res://Textures/Level1/blankie.png" id="4_f2sok"]
 [ext_resource type="Texture2D" uid="uid://d1xr61kec1qob" path="res://Textures/Level1/pond_sheet.png" id="5_2ng0r"]
@@ -17,8 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bn8le600py1je" path="res://Textures/Level1/fence-sheet.png" id="14_q2t12"]
 [ext_resource type="Texture2D" uid="uid://d2mubfqmpv03p" path="res://Textures/Level1/fence_side_sheet.png" id="15_4d1rk"]
 [ext_resource type="Texture2D" uid="uid://b3ikar70082wj" path="res://Textures/Level1/level1_grass_sheet.png" id="16_d4ylk"]
+[ext_resource type="AudioStream" uid="uid://bkm7w8ofgye3f" path="res://Audio/SFX/wood.wav" id="17_0vdjy"]
 [ext_resource type="Texture2D" uid="uid://c4ypo5n301vc1" path="res://Textures/Level1/Funny_roof.png" id="17_kn6ik"]
-[ext_resource type="PackedScene" uid="uid://ds1kxrg01raf6" path="res://Overlaps/scene_switcher.tscn" id="18_af4h1"]
+[ext_resource type="AudioStream" uid="uid://ejutpe3q8kh0" path="res://Audio/SFX/garden_ambience.ogg" id="20_ujvp0"]
+[ext_resource type="PackedScene" uid="uid://c7vqx1l6gpsu3" path="res://Prefabs/Edible Objects/Level1/worm2.tscn" id="23_iexys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4h30"]
 atlas = ExtResource("5_2ng0r")
@@ -41,6 +45,9 @@ animations = [{
 "name": &"new_animation",
 "speed": 1.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fqtq"]
+size = Vector2(717, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m1sy"]
 size = Vector2(31.9997, 159)
@@ -69,19 +76,31 @@ size = Vector2(82, 23.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qewcg"]
 size = Vector2(27, 83)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fqtq"]
-size = Vector2(717, 30)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cu3c"]
-size = Vector2(639, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulb8w"]
-size = Vector2(641, 9)
-
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("scene_switcher")]
+[node name="Level1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ek6o4")
-scene_switcher = NodePath("SceneSwitcher")
+next_scene_path = "res://Scenes/city_travel.tscn"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4rnk3")
+volume_db = -12.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Ambience_Garden" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_ujvp0")
+volume_db = 2.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Ambience"
+
+[node name="Ambience_Pond" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-13, 20)
+stream = ExtResource("3_82y5r")
+volume_db = -9.0
+autoplay = true
+bus = &"Ambience"
 
 [node name="BG_Ground" type="Sprite2D" parent="."]
 z_index = -2
@@ -122,14 +141,14 @@ position = Vector2(145, -38)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
-[node name="Camera2D" parent="FrogPlayer" index="4"]
+[node name="Camera2D" parent="FrogPlayer" index="5"]
 zoom = Vector2(2.5, 2.5)
 limit_left = -317
 limit_top = -177
 limit_right = 317
 limit_bottom = 177
 
-[node name="Hurtbox" parent="FrogPlayer" index="6"]
+[node name="Hurtbox" parent="FrogPlayer" index="7"]
 z_index = 1
 
 [node name="Dog" parent="." instance=ExtResource("7_ex73q")]
@@ -137,7 +156,7 @@ y_sort_enabled = false
 position = Vector2(189, 104)
 metadata/_edit_group_ = true
 
-[node name="Hitbox" parent="Dog" index="5"]
+[node name="Hitbox" parent="Dog" index="6"]
 z_index = 1
 
 [node name="Edible Objects" type="Node2D" parent="."]
@@ -147,7 +166,7 @@ y_sort_enabled = true
 position = Vector2(-266, -59)
 scale = Vector2(1.225, 1.225)
 
-[node name="Sprite2D" parent="Edible Objects/Bush" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush" index="1"]
 frame = 1
 
 [node name="Fruit" parent="Edible Objects/Bush" instance=ExtResource("9_si366")]
@@ -169,7 +188,7 @@ scale = Vector2(0.563265, 0.563265)
 position = Vector2(258, 114)
 scale = Vector2(1.225, 1.225)
 
-[node name="Sprite2D" parent="Edible Objects/Bush6" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush6" index="1"]
 frame = 1
 
 [node name="Bush2" parent="Edible Objects" instance=ExtResource("8_a1uua")]
@@ -184,7 +203,7 @@ scale = Vector2(1.225, 1.225)
 position = Vector2(266, -60)
 scale = Vector2(1.225, 1.225)
 
-[node name="Sprite2D" parent="Edible Objects/Bush3" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush3" index="1"]
 frame = 2
 
 [node name="Fruit6" parent="Edible Objects/Bush3" instance=ExtResource("9_si366")]
@@ -192,7 +211,7 @@ z_index = 1
 position = Vector2(-8.16326, -6.53061)
 scale = Vector2(0.710204, 0.710204)
 
-[node name="Sprite2D" parent="Edible Objects/Bush3/Fruit6" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush3/Fruit6" index="1"]
 frame = 2
 
 [node name="Fruit8" parent="Edible Objects/Bush3" instance=ExtResource("9_si366")]
@@ -200,7 +219,7 @@ z_index = 1
 position = Vector2(11.4286, 8.97959)
 scale = Vector2(0.710204, 0.710204)
 
-[node name="Sprite2D" parent="Edible Objects/Bush3/Fruit8" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush3/Fruit8" index="1"]
 frame = 2
 
 [node name="Bush4" parent="Edible Objects" instance=ExtResource("8_a1uua")]
@@ -212,7 +231,7 @@ z_index = 1
 position = Vector2(-11.4286, -4.08163)
 scale = Vector2(0.563265, 0.563265)
 
-[node name="Sprite2D" parent="Edible Objects/Bush4/Fruit4" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush4/Fruit4" index="1"]
 frame = 1
 
 [node name="Fruit5" parent="Edible Objects/Bush4" instance=ExtResource("9_si366")]
@@ -220,49 +239,78 @@ z_index = 1
 position = Vector2(11.4286, 6.53061)
 scale = Vector2(0.563265, 0.563265)
 
-[node name="Sprite2D" parent="Edible Objects/Bush4/Fruit5" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Bush4/Fruit5" index="1"]
 frame = 1
 
 [node name="Plant" parent="Edible Objects" instance=ExtResource("10_q32bf")]
 position = Vector2(161, -69)
 
-[node name="Sprite2D" parent="Edible Objects/Plant" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Plant" index="1"]
 frame = 2
 
 [node name="Plant4" parent="Edible Objects" instance=ExtResource("10_q32bf")]
 position = Vector2(-193, -56)
 
-[node name="Sprite2D" parent="Edible Objects/Plant4" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Plant4" index="1"]
 frame = 2
 
 [node name="Plant2" parent="Edible Objects" instance=ExtResource("10_q32bf")]
 position = Vector2(204, -67)
 
-[node name="Sprite2D" parent="Edible Objects/Plant2" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Plant2" index="1"]
 frame = 1
 
 [node name="Plant3" parent="Edible Objects" instance=ExtResource("10_q32bf")]
 position = Vector2(-277, 16)
 
-[node name="Sprite2D" parent="Edible Objects/Plant3" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Plant3" index="1"]
 position = Vector2(-2, -4)
 
 [node name="Worm2" parent="Edible Objects" instance=ExtResource("12_44yon")]
 position = Vector2(153, 80)
 scale = Vector2(0.4, 0.4)
 
-[node name="Worm5" parent="Edible Objects" instance=ExtResource("12_44yon")]
-position = Vector2(221, 15)
+[node name="Worm3" parent="Edible Objects" instance=ExtResource("12_44yon")]
+position = Vector2(153, 80)
 scale = Vector2(0.4, 0.4)
+
+[node name="Worm5" parent="Edible Objects" instance=ExtResource("12_44yon")]
+position = Vector2(-15, -58)
+scale = Vector2(0.4, 0.4)
+
+[node name="Worm" parent="Edible Objects" instance=ExtResource("23_iexys")]
+position = Vector2(-173, 1.00002)
+scale = Vector2(0.4, 0.4)
+
+[node name="Worm4" parent="Edible Objects" instance=ExtResource("23_iexys")]
+position = Vector2(17, 128)
+scale = Vector2(0.4, 0.4)
+
+[node name="Funny Roof" type="StaticBody2D" parent="Edible Objects"]
+
+[node name="FunnyRoof" type="Sprite2D" parent="Edible Objects/Funny Roof"]
+modulate = Color(0.483986, 0.508995, 0.535335, 1)
+z_index = 2
+position = Vector2(0, -19)
+scale = Vector2(1.13, 1.13)
+texture = ExtResource("17_kn6ik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edible Objects/Funny Roof"]
+position = Vector2(4, 175)
+shape = SubResource("RectangleShape2D_8fqtq")
 
 [node name="WateringCan" parent="Edible Objects" instance=ExtResource("14_fgp4e")]
 position = Vector2(-167, -47)
+frog_size_threshold = 2
 
 [node name="Fence1" type="StaticBody2D" parent="." groups=["edible_objects"]]
 position = Vector2(-240, -117)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 5
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fence1"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Fence1"]
 y_sort_enabled = true
@@ -287,6 +335,7 @@ shape = SubResource("RectangleShape2D_ri2fx")
 position = Vector2(-80, -117)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 5
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Fence2"]
@@ -309,10 +358,13 @@ collision_mask = 0
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ri2fx")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fence2"]
+
 [node name="Fence3" type="StaticBody2D" parent="." groups=["edible_objects"]]
 position = Vector2(80, -117)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 5
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Fence3"]
@@ -335,10 +387,13 @@ collision_mask = 0
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ri2fx")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fence3"]
+
 [node name="Fence4" type="StaticBody2D" parent="." groups=["edible_objects"]]
 position = Vector2(240, -117)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 5
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Fence4"]
@@ -361,6 +416,8 @@ collision_mask = 0
 position = Vector2(2.6875, 5.3125)
 shape = SubResource("RectangleShape2D_ri2fx")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fence4"]
+
 [node name="Side Fence" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
@@ -368,6 +425,7 @@ metadata/_edit_group_ = true
 position = Vector2(306, -58)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence/Fence5"]
@@ -389,10 +447,13 @@ collision_mask = 0
 position = Vector2(4.5, -9)
 shape = SubResource("RectangleShape2D_3v7xa")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence/Fence5"]
+
 [node name="Fence6" type="StaticBody2D" parent="Side Fence" groups=["edible_objects"]]
 position = Vector2(307, 23)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence/Fence6"]
@@ -415,10 +476,13 @@ collision_mask = 0
 position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_8qvpa")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence/Fence6"]
+
 [node name="Fence7" type="StaticBody2D" parent="Side Fence" groups=["edible_objects"]]
 position = Vector2(308, 119)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence/Fence7"]
@@ -441,6 +505,8 @@ collision_mask = 0
 position = Vector2(0.5, -9.5)
 shape = SubResource("RectangleShape2D_qewcg")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence/Fence7"]
+
 [node name="Side Fence2" type="Node2D" parent="."]
 scale = Vector2(-1, 1)
 metadata/_edit_group_ = true
@@ -449,6 +515,7 @@ metadata/_edit_group_ = true
 position = Vector2(308, -46)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence2/Fence5"]
@@ -470,10 +537,13 @@ collision_mask = 0
 position = Vector2(4.5, -9)
 shape = SubResource("RectangleShape2D_3v7xa")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence2/Fence5"]
+
 [node name="Fence6" type="StaticBody2D" parent="Side Fence2" groups=["edible_objects"]]
 position = Vector2(309, 35)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence2/Fence6"]
@@ -496,10 +566,13 @@ collision_mask = 0
 position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_8qvpa")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence2/Fence6"]
+
 [node name="Fence7" type="StaticBody2D" parent="Side Fence2" groups=["edible_objects"]]
 position = Vector2(310, 131)
 script = ExtResource("13_cukq1")
 frog_size_threshold = 4
+eat_sounds = Array[AudioStream]([ExtResource("17_0vdjy")])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Side Fence2/Fence7"]
@@ -521,6 +594,8 @@ collision_mask = 0
 [node name="EatCollision" type="CollisionShape2D" parent="Side Fence2/Fence7/EatArea"]
 position = Vector2(0.5, -9.5)
 shape = SubResource("RectangleShape2D_qewcg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Side Fence2/Fence7"]
 
 [node name="Grasses" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -567,32 +642,6 @@ position = Vector2(260, 69)
 texture = ExtResource("16_d4ylk")
 hframes = 7
 frame = 2
-
-[node name="Funny Roof" type="StaticBody2D" parent="."]
-
-[node name="FunnyRoof" type="Sprite2D" parent="Funny Roof"]
-modulate = Color(0.483986, 0.508995, 0.535335, 1)
-z_index = 2
-position = Vector2(0, -19)
-scale = Vector2(1.13, 1.13)
-texture = ExtResource("17_kn6ik")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Funny Roof"]
-position = Vector2(4, 175)
-shape = SubResource("RectangleShape2D_8fqtq")
-
-[node name="SceneSwitcher" parent="." instance=ExtResource("18_af4h1")]
-position = Vector2(-3, -137)
-next_scene_path = "res://Scenes/level2.tscn"
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" parent="SceneSwitcher" index="0"]
-position = Vector2(-0.5, 12)
-shape = SubResource("RectangleShape2D_8cu3c")
-
-[node name="CollisionShape2D" parent="SceneSwitcher/Area2D" index="0"]
-position = Vector2(1.5, 21.5)
-shape = SubResource("RectangleShape2D_ulb8w")
 
 [connection signal="mouse_entered" from="Fence1" to="Fence1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Fence1" to="Fence1" method="_on_mouse_exited"]
@@ -653,4 +702,3 @@ shape = SubResource("RectangleShape2D_ulb8w")
 [editable path="Edible Objects/Plant4"]
 [editable path="Edible Objects/Plant2"]
 [editable path="Edible Objects/Plant3"]
-[editable path="SceneSwitcher"]

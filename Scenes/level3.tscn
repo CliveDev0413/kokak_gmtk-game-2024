@@ -1,28 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://djnuxtpeh54un"]
+[gd_scene load_steps=10 format=3 uid="uid://djnuxtpeh54un"]
 
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_s47f0"]
+[ext_resource type="AudioStream" uid="uid://bbvp58i7yf3a4" path="res://Audio/Music/lvl3.ogg" id="2_5ehnk"]
+[ext_resource type="Texture2D" uid="uid://bfyqy0cyuhw3o" path="res://Textures/blue_bg.png" id="2_qaas3"]
 [ext_resource type="PackedScene" uid="uid://cmwd6dgoyjbqj" path="res://Prefabs/frog_player.tscn" id="6_q4ktc"]
+[ext_resource type="PackedScene" uid="uid://c6576bh7741mk" path="res://Prefabs/Edible Objects/Level3/country_1.tscn" id="8_2dcgf"]
+[ext_resource type="PackedScene" uid="uid://dfmtmcpeyk1xt" path="res://Prefabs/Edible Objects/Level3/country_2.tscn" id="9_222hc"]
+[ext_resource type="PackedScene" uid="uid://b65tup7j2ts8o" path="res://Prefabs/Edible Objects/Level3/country_3.tscn" id="10_1qtwd"]
+[ext_resource type="PackedScene" uid="uid://c4eb78r28s7o5" path="res://Prefabs/Edible Objects/Level3/country_4.tscn" id="11_tg7j5"]
+[ext_resource type="PackedScene" uid="uid://bpctwqnyiqqtw" path="res://Prefabs/Edible Objects/Level3/country_5.tscn" id="12_2egti"]
 
 [node name="Level3" type="Node2D"]
-y_sort_enabled = true
+script = ExtResource("1_s47f0")
+next_scene_path = "res://Scenes/space.tscn"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5ehnk")
+volume_db = -12.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="BlueBg" type="Sprite2D" parent="."]
+scale = Vector2(2.425, 2.425)
+texture = ExtResource("2_qaas3")
 
 [node name="FrogPlayer" parent="." instance=ExtResource("6_q4ktc")]
-scale = Vector2(0.4, 0.4)
-GROW_SIZE = Vector2(0.2, 0.2)
-INCREASE_THRESHOLD = 4
+position = Vector2(-303, 13)
+scale = Vector2(1.91, 1.91)
+INCREASE_THRESHOLD = 2
+THRESHOLD_ADDER = 0
 metadata/_edit_group_ = true
 
-[node name="Camera2D" parent="FrogPlayer" index="4"]
-zoom = Vector2(2, 2)
-limit_left = -317
-limit_top = -177
-limit_right = 317
-limit_bottom = 177
+[node name="Camera2D" parent="FrogPlayer" index="5"]
+zoom = Vector2(1.075, 1.075)
+limit_left = -392
+limit_top = -220
+limit_right = 422
+limit_bottom = 212
 
-[node name="Hurtbox" parent="FrogPlayer" index="6"]
+[node name="Hurtbox" parent="FrogPlayer" index="7"]
 z_index = 1
 
 [node name="Edible Objects" type="Node2D" parent="."]
 y_sort_enabled = true
+position = Vector2(-44, -3)
+
+[node name="Country" parent="Edible Objects" instance=ExtResource("8_2dcgf")]
+position = Vector2(197, 107)
+scale = Vector2(1.3, 1.3)
+
+[node name="Country2" parent="Edible Objects" instance=ExtResource("9_222hc")]
+position = Vector2(-80, 105)
+scale = Vector2(1.3, 1.3)
+
+[node name="Country3" parent="Edible Objects" instance=ExtResource("10_1qtwd")]
+position = Vector2(244, -53)
+scale = Vector2(1.3, 1.3)
+
+[node name="Country4" parent="Edible Objects" instance=ExtResource("11_tg7j5")]
+position = Vector2(4, -97)
+scale = Vector2(1.3, 1.3)
+
+[node name="Country5" parent="Edible Objects" instance=ExtResource("12_2egti")]
+position = Vector2(-173, -104)
+scale = Vector2(1.3, 1.3)
 
 [editable path="FrogPlayer"]
 [editable path="FrogPlayer/Hurtbox"]

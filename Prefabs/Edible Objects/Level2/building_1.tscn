@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ku38ladlqdiq"]
+[gd_scene load_steps=6 format=3 uid="uid://ku38ladlqdiq"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_r8cba"]
 [ext_resource type="Texture2D" uid="uid://prv3qqkosgg6" path="res://Textures/Level2/Building1.png" id="2_8cbxn"]
+[ext_resource type="AudioStream" uid="uid://bfi2c6m5nei6q" path="res://Audio/SFX/rocks.wav" id="2_ypbiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6rjb"]
 size = Vector2(174, 101)
@@ -12,11 +13,12 @@ size = Vector2(208, 261)
 [node name="Building1" instance=ExtResource("1_r8cba")]
 frog_size_threshold = 5
 no_eat_collisions = true
+eat_sounds = Array[AudioStream]([ExtResource("2_ypbiq")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_8cbxn")
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(15, 72.5)
 shape = SubResource("RectangleShape2D_x6rjb")
 

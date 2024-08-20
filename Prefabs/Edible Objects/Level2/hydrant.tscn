@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://lan6hrvnc415"]
+[gd_scene load_steps=6 format=3 uid="uid://lan6hrvnc415"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_oiix1"]
 [ext_resource type="Texture2D" uid="uid://mfgsx1fn44t8" path="res://Textures/Level2/Hyrdant.png" id="2_5q2bs"]
+[ext_resource type="AudioStream" uid="uid://b65dv361qsrax" path="res://Audio/SFX/pot.wav" id="2_d32wa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06sdb"]
 radius = 13.0
@@ -12,11 +13,12 @@ size = Vector2(52, 61)
 
 [node name="Hydrant" instance=ExtResource("1_oiix1")]
 frog_size_threshold = 2
+eat_sounds = Array[AudioStream]([ExtResource("2_d32wa")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_5q2bs")
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(2, 16)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_06sdb")

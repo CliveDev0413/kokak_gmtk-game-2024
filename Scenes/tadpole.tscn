@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://nu8dr3q75q6p"]
+
+[ext_resource type="PackedScene" uid="uid://7ouht768830q" path="res://Prefabs/in_between.tscn" id="1_r4y7x"]
+[ext_resource type="Texture2D" uid="uid://d2yx2384g7xlp" path="res://Textures/In Betweens/tad_to_forg.png" id="2_n80a5"]
+
+[node name="Tadpole" node_paths=PackedStringArray("pics_to_show") instance=ExtResource("1_r4y7x")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pics_to_show = [NodePath("TextureRect")]
+next_scene_path = "res://Scenes/level1.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n80a5")
+
+[node name="Sprite2D_Control#RichTextLabel" type="RichTextLabel" parent="TextureRect" index="0"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -86.0
+offset_right = 200.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "the tadpole turned into a cool frog. oh, what shall it do now?
+[center][press space to continue][/center]"
+
+[node name="Sprite2D_Control_RichTextLabel#ColorRect" type="ColorRect" parent="TextureRect/Sprite2D_Control#RichTextLabel" index="1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)

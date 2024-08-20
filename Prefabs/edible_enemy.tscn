@@ -8,6 +8,8 @@ y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_ehj22")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="."]

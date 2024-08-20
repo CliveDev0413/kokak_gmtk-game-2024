@@ -7,7 +7,6 @@ extends "res://Scripts/edible_object.gd"
 
 var walking_point: Vector2;
 var is_walking: bool = false;
-var rng = RandomNumberGenerator.new();
 
 func _physics_process(delta: float) -> void:
 	super(delta);

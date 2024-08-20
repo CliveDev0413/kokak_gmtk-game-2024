@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8c8fsi6lw73i"]
+[gd_scene load_steps=8 format=3 uid="uid://c8c8fsi6lw73i"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_8sp0f"]
 [ext_resource type="Texture2D" uid="uid://d3grgfduf364m" path="res://Textures/Level1/bushes_sheet.png" id="2_3ud7q"]
+[ext_resource type="AudioStream" uid="uid://v8adevvwjkvu" path="res://Audio/SFX/leaves1.wav" id="2_8r0qh"]
+[ext_resource type="AudioStream" uid="uid://b3cxo5ueoi2nv" path="res://Audio/SFX/leaves2.wav" id="3_8sp8n"]
+[ext_resource type="AudioStream" uid="uid://d1rs78mg8vdb2" path="res://Audio/SFX/leaves3.wav" id="4_vogyq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvf5w"]
 radius = 14.0
@@ -12,12 +15,13 @@ size = Vector2(59, 58)
 
 [node name="Bush" instance=ExtResource("1_8sp0f")]
 frog_size_threshold = 3
+eat_sounds = Array[AudioStream]([ExtResource("2_8r0qh"), ExtResource("3_8sp8n"), ExtResource("4_vogyq")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_3ud7q")
 hframes = 3
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(0, 12)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_gvf5w")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfmtmcpeyk1xt"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_ge8qr"]
+[ext_resource type="Texture2D" uid="uid://32ggq3324stv" path="res://Textures/Level3/country2.png" id="2_dk4f5"]
+[ext_resource type="AudioStream" uid="uid://bfi2c6m5nei6q" path="res://Audio/SFX/rocks.wav" id="2_ehyau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g88i"]
+size = Vector2(128, 116)
+
+[node name="Country2" instance=ExtResource("1_ge8qr")]
+eat_sounds = Array[AudioStream]([ExtResource("2_ehyau")])
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_dk4f5")
+
+[node name="Collider" parent="." index="2"]
+disabled = true
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_8g88i")

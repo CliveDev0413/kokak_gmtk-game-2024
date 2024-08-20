@@ -5,12 +5,17 @@ extends CharacterBody2D
 @export var GROW_SIZE: Vector2 = Vector2(0.3, 0.3);
 @export var INCREASE_THRESHOLD: int = 3;
 @export var THRESHOLD_ADDER: int = 2;
+@export var JUMP_SOUNDS: Array[AudioStream];
+@export var DEATH_SOUNDS: Array[AudioStream];
+@export var SLURP_SOUND: AudioStream;
+@export var AWA_SOUND: AudioStream;
 
 @onready var sprite: Sprite2D = $Sprite2D;
 @onready var line: Line2D = $Line2D;
 @onready var animationTree = $AnimationTree;
 @onready var animationState = animationTree.get("parameters/playback");
 @onready var animationPLayer = $AnimationPlayer;
+@onready var audioPlayer = $AudioStreamPlayer2D;
 
 @onready var jumpCursor = preload('res://Textures/jump_cursor.png');
 
@@ -23,9 +28,14 @@ var is_hovering_object: bool = false;
 var is_moving: bool = false;
 var is_dead: bool = false;
 
+var rng = RandomNumberGenerator.new();
+
 func _process(delta: float) -> void:
 	if is_dead:
 		return;
+		
+	if Input.is_action_just_pressed("restart"):
+		die();
 	
 	frog_animate();
 	
@@ -50,6 +60,10 @@ func frog_jump_detect(delta: float) -> void:
 			Input.set_custom_mouse_cursor(null);
 		
 		if Input.is_action_just_pressed("right_click"):
+			# jump sfx
+			var random_num = rng.randf_range(0, JUMP_SOUNDS.size());
+			play_sfx(JUMP_SOUNDS[random_num], -3, rng.randf_range(0.7, 1.2));
+			
 			frog_jump();
 	else:
 		Input.set_custom_mouse_cursor(null);
@@ -96,18 +110,31 @@ func release_tongue(delta: float) -> void:
 func retract_tongue(delta: float) -> void:	
 	var value = line.get_point_count() - 1;
 	
+	play_sfx(SLURP_SOUND, -10, rng.randf_range(.9, 1.5));
+	
 	for i in range(0, line.get_point_count()):
 		await get_tree().create_timer(.001).timeout;
 		line.remove_point(value);
 		value -= 1;
 		
 	Global.is_frog_tongue_out = false;
+	
+	var random_num = rng.randi();
+	
+	if (random_num % 10) == (10 - 1):
+		animationTree.active = false;
+		animationPLayer.play("awa");
+		play_sfx(AWA_SOUND, -5, 1.2);
+		await animationPLayer.animation_finished;
+		animationTree.active = true;
+	
 	animationState.travel("Idle");
 
 func ate_object(object: Node2D) -> void:
 	objects_eaten += 1;
 	
 	object.queue_free();
+	
 	velocity = Vector2.ZERO;
 	
 	if objects_eaten % INCREASE_THRESHOLD == 0:
@@ -134,12 +161,26 @@ func get_frog_direction() -> Vector2:
 	return vector;
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	die();
+
+func play_sfx(audio: AudioStream, volume: float = 0, pitch: float = 1) -> void:
+	audioPlayer.stream = audio;
+	audioPlayer.volume_db = volume;
+	audioPlayer.pitch_scale = pitch;
+	audioPlayer.play();
+
+func die() -> void:
 	is_dead = true;
 	set_process_mode(Node.PROCESS_MODE_ALWAYS);
 	get_tree().paused = true;
 	
+	var random_num = rng.randf_range(0, DEATH_SOUNDS.size());
+	play_sfx(DEATH_SOUNDS[random_num], -5, rng.randf_range(.9, 1.3))
+	
 	animationTree.active = false;
 	animationPLayer.play("dead");
+	
 	await animationPLayer.animation_finished;
+	
 	get_tree().paused = false;
 	get_tree().reload_current_scene();

@@ -6,6 +6,10 @@
 script = ExtResource("1_327ca")
 metadata/_edit_group_ = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+bus = &"Sounds"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 

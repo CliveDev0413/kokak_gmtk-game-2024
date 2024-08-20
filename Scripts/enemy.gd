@@ -10,6 +10,7 @@ var state: EnemyStates;
 @export var MOVE_SPEED: float = 100.0;
 @export var CHASE_ANIM: String;
 @export var NOTICE_ANIM: String;
+@export var ENEMY_SOUND: AudioStream;
 
 @onready var animationPlayer = $AnimationPlayer;
 @onready var sprite = $Sprite2D;
@@ -50,6 +51,13 @@ func chase_player() -> void:
 	
 	var object = self;
 	
+	var random_num = rng.randi();
+	
+	if (random_num % 200) == (200 - 1):
+		audioPlayer.stream = ENEMY_SOUND;
+		audioPlayer.pitch_scale = rng.randf_range(0.7, 1.3);
+		audioPlayer.play();
+	
 	if self.is_class("CharacterBody2D"):
 		(object as CharacterBody2D).velocity = direction * MOVE_SPEED;
 		(object as CharacterBody2D).move_and_slide();
@@ -61,10 +69,15 @@ func _on_visible_on_screen() -> void:
 		is_active = true;
 		$VisibleOnScreenEnabler2D.queue_free();
 		
+		audioPlayer.stream = ENEMY_SOUND;
+		audioPlayer.pitch_scale = rng.randf_range(0.7, 1.3);
+		audioPlayer.play();
+		
 		if NOTICE_ANIM:
 			animationPlayer.play(NOTICE_ANIM);
 			await animationPlayer.animation_finished;
 		else:
 			await get_tree().create_timer(2).timeout;
+			
 		
 		state = EnemyStates.CHASE;

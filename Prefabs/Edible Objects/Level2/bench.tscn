@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfcew8cwx5vwq"]
+[gd_scene load_steps=6 format=3 uid="uid://dfcew8cwx5vwq"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_p4hmy"]
 [ext_resource type="Texture2D" uid="uid://bvcppnsnunacn" path="res://Textures/Level2/Bench.png" id="2_44854"]
+[ext_resource type="AudioStream" uid="uid://bkm7w8ofgye3f" path="res://Audio/SFX/wood.wav" id="2_nrg27"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qyigy"]
 radius = 14.0
@@ -12,12 +13,13 @@ size = Vector2(80, 51)
 
 [node name="Bench" instance=ExtResource("1_p4hmy")]
 frog_size_threshold = 3
+eat_sounds = Array[AudioStream]([ExtResource("2_nrg27")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 scale = Vector2(1.40625, 1)
 texture = ExtResource("2_44854")
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(0, 12)
 rotation = 17.2788
 shape = SubResource("CapsuleShape2D_qyigy")

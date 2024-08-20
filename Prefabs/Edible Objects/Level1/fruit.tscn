@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsowgtssqxnb1"]
+[gd_scene load_steps=6 format=3 uid="uid://dsowgtssqxnb1"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_gnidw"]
+[ext_resource type="AudioStream" uid="uid://6kiwvpkxt6sx" path="res://Audio/SFX/crunch.wav" id="2_bqhlm"]
 [ext_resource type="Texture2D" uid="uid://cwbjpellc618x" path="res://Textures/Level1/fruits_sheet.png" id="2_srjlj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pinqu"]
@@ -10,12 +11,13 @@ radius = 7.0
 size = Vector2(23, 24)
 
 [node name="Fruit" instance=ExtResource("1_gnidw")]
+eat_sounds = Array[AudioStream]([ExtResource("2_bqhlm")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_srjlj")
 hframes = 3
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_pinqu")
 

@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://5at7bxea23mb"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_57wvx"]
+[ext_resource type="Texture2D" uid="uid://bfyqy0cyuhw3o" path="res://Textures/blue_bg.png" id="1_vky4a"]
+[ext_resource type="Texture2D" uid="uid://bsjuf64sqg60k" path="res://Textures/KODAK_Logo.png" id="2_1urs1"]
+[ext_resource type="AudioStream" uid="uid://dyi8umeovhacm" path="res://Audio/Music/mainmenu_loop.ogg" id="2_7almm"]
+
+[sub_resource type="Animation" id="Animation_ubugl"]
+resource_name = "floating_logo"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KodakLogo:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -10.9), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_erq8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KodakLogo:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -10.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4j1xx"]
+_data = {
+"RESET": SubResource("Animation_erq8n"),
+"floating_logo": SubResource("Animation_ubugl")
+}
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_57wvx")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7almm")
+volume_db = -5.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="BlueBg" type="Sprite2D" parent="."]
+position = Vector2(346, 195)
+scale = Vector2(1.88532, 1.88532)
+texture = ExtResource("1_vky4a")
+
+[node name="KodakLogo" type="Sprite2D" parent="."]
+position = Vector2(339, 182)
+scale = Vector2(0.662, 0.662)
+texture = ExtResource("2_1urs1")
+offset = Vector2(0, -10.9)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4j1xx")
+}
+autoplay = "floating_logo"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 6.0
+offset_right = 639.0
+offset_bottom = 367.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.537
+anchor_top = 0.745
+anchor_right = 0.537
+anchor_bottom = 0.745
+offset_left = -137.68
+offset_top = 0.0549622
+offset_right = 143.32
+offset_bottom = 58.055
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]press [space] to start[/center]
+
+[center]read itch.io page for controls![/center]"
+fit_content = true
+drag_and_drop_selection_enabled = false

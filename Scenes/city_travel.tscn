@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://btw6hmexcmuly"]
+
+[ext_resource type="PackedScene" uid="uid://7ouht768830q" path="res://Prefabs/in_between.tscn" id="1_72ege"]
+[ext_resource type="Texture2D" uid="uid://bqs2fqea7gbnu" path="res://Textures/In Betweens/forg_smal_oh_no.png" id="2_1mwxa"]
+[ext_resource type="Texture2D" uid="uid://bqr5tppcbvui7" path="res://Textures/In Betweens/forg_reset_oh_no.png" id="3_v72iy"]
+
+[node name="City Travel" node_paths=PackedStringArray("pics_to_show") instance=ExtResource("1_72ege")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pics_to_show = [NodePath("Slide1"), NodePath("Slide2")]
+next_scene_path = "res://Scenes/level2.tscn"
+
+[node name="Slide1" type="TextureRect" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1mwxa")
+
+[node name="Sprite2D_Control#RichTextLabel" type="RichTextLabel" parent="Slide1" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -86.0
+offset_right = 200.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "after Kokak devoured his home, he proceeded to the city. But lost his size on the way!
+[center][press space to continue][/center]"
+
+[node name="Sprite2D_Control_RichTextLabel#ColorRect" type="ColorRect" parent="Slide1/Sprite2D_Control#RichTextLabel" index="1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.780392)
+
+[node name="Slide2" type="TextureRect" parent="." index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v72iy")
+
+[node name="Control" type="Control" parent="Slide2" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Slide2/Control" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -214.0
+offset_top = 25.0
+offset_right = 212.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "now he has to eat again, oh no :(
+
+[center][press space to continue][/center]"
+
+[node name="ColorRect" type="ColorRect" parent="Slide2/Control/RichTextLabel" index="1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.909804)

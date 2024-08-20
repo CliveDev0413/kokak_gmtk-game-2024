@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpl66u2dkc5xd"]
+
+[ext_resource type="PackedScene" uid="uid://7ouht768830q" path="res://Prefabs/in_between.tscn" id="1_ewc6j"]
+[ext_resource type="Texture2D" uid="uid://bqmv4v8cfut0" path="res://Textures/In Betweens/FROG_IN_SPACE.png" id="2_o6ydm"]
+
+[node name="Space" node_paths=PackedStringArray("pics_to_show") instance=ExtResource("1_ewc6j")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pics_to_show = [NodePath("Slide1")]
+next_scene_path = "res://Scenes/credits.tscn"
+
+[node name="Slide1" type="TextureRect" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o6ydm")
+
+[node name="Sprite2D_Control#RichTextLabel" type="RichTextLabel" parent="Slide1" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -86.0
+offset_right = 200.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "he ate everything. he has achieved fulfillment. unless... 
+[center]THE END[/center]
+[center][press space to continue][/center]"
+
+[node name="Sprite2D_Control_RichTextLabel#ColorRect" type="ColorRect" parent="Slide1/Sprite2D_Control#RichTextLabel" index="1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bjocl3n3otduk"]
+[gd_scene load_steps=21 format=3 uid="uid://bjocl3n3otduk"]
 
 [ext_resource type="Texture2D" uid="uid://oao74w8ktuag" path="res://Textures/Level2/level2_BG_Sky.png" id="1_4d1k5"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_oyiel"]
+[ext_resource type="AudioStream" uid="uid://n1dameqi10ov" path="res://Audio/SFX/city_ambience.ogg" id="2_bsfui"]
+[ext_resource type="AudioStream" uid="uid://cs74nluc41nu7" path="res://Audio/Music/lvl2.ogg" id="2_f23du"]
 [ext_resource type="Texture2D" uid="uid://ddijgb4ynbxnf" path="res://Textures/Level2/level2_BG_Clouds.png" id="2_fkpt5"]
 [ext_resource type="Texture2D" uid="uid://da8ebgpwseoxk" path="res://Textures/Level2/level2_BG_Street.png" id="4_ml05f"]
 [ext_resource type="Texture2D" uid="uid://cr1qaws7n74sw" path="res://Textures/Level2/level2_BG_Buildings.png" id="5_m1yfd"]
@@ -15,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://5irum84l24es" path="res://Prefabs/NPCs/person_1.tscn" id="12_fri7j"]
 [ext_resource type="Texture2D" uid="uid://c7vykf6e6qh4f" path="res://Textures/Level2/girl_walk_sheet.png" id="13_o3k4m"]
 [ext_resource type="PackedScene" uid="uid://colfkxh7d5n4y" path="res://Prefabs/Enemies/police_dog.tscn" id="14_002dv"]
-[ext_resource type="PackedScene" uid="uid://ds1kxrg01raf6" path="res://Overlaps/scene_switcher.tscn" id="15_s7n25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqmq1"]
 size = Vector2(673, 20)
@@ -26,15 +27,23 @@ size = Vector2(18, 466)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddcrx"]
 size = Vector2(638, 23.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooxnb"]
-size = Vector2(16, 201.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbut3"]
-size = Vector2(16, 201.5)
-
-[node name="Level2" type="Node2D" node_paths=PackedStringArray("scene_switcher")]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_oyiel")
-scene_switcher = NodePath("SceneSwitcher")
+next_scene_path = "res://Scenes/ate_the_city.tscn"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f23du")
+volume_db = -12.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="Ambience_City" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_bsfui")
+volume_db = -12.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Ambience"
 
 [node name="BG_Sky" type="Sprite2D" parent="."]
 z_index = -1
@@ -60,14 +69,14 @@ GROW_SIZE = Vector2(0.2, 0.2)
 INCREASE_THRESHOLD = 4
 metadata/_edit_group_ = true
 
-[node name="Camera2D" parent="FrogPlayer" index="4"]
+[node name="Camera2D" parent="FrogPlayer" index="5"]
 zoom = Vector2(2, 2)
 limit_left = -317
 limit_top = -177
 limit_right = 317
 limit_bottom = 177
 
-[node name="Hurtbox" parent="FrogPlayer" index="6"]
+[node name="Hurtbox" parent="FrogPlayer" index="7"]
 z_index = 1
 
 [node name="Edible Objects" type="Node2D" parent="."]
@@ -114,7 +123,7 @@ position = Vector2(130, 43)
 rotation = -0.584745
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash3" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash3" index="1"]
 frame = 1
 
 [node name="Trash5" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -122,7 +131,7 @@ position = Vector2(71, 150)
 rotation = -0.534687
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash5" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash5" index="1"]
 frame = 1
 
 [node name="Trash11" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -130,7 +139,7 @@ position = Vector2(-292, 35)
 rotation = -3.28144
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash11" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash11" index="1"]
 frame = 1
 
 [node name="Trash12" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -138,7 +147,7 @@ position = Vector2(-149, 156)
 rotation = -3.86565
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash12" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash12" index="1"]
 frame = 1
 
 [node name="Trash13" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -146,7 +155,7 @@ position = Vector2(-149, 156)
 rotation = -3.86565
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash13" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash13" index="1"]
 frame = 1
 
 [node name="Trash15" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -154,7 +163,7 @@ position = Vector2(-273, 149)
 rotation = -6.25147
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash15" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash15" index="1"]
 frame = 1
 
 [node name="Trash16" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -162,7 +171,7 @@ position = Vector2(-273, 149)
 rotation = -6.25147
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash16" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash16" index="1"]
 frame = 1
 
 [node name="Trash8" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -170,7 +179,7 @@ position = Vector2(242, 53)
 rotation = 0.941773
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash8" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash8" index="1"]
 frame = 1
 
 [node name="Trash10" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -178,7 +187,7 @@ position = Vector2(242, 149)
 rotation = -1.81054
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash10" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash10" index="1"]
 frame = 1
 
 [node name="Trash6" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
@@ -186,7 +195,7 @@ position = Vector2(107, 160)
 rotation = 1.97565
 scale = Vector2(0.42, 0.42)
 
-[node name="Sprite2D" parent="Edible Objects/Trash6" index="0"]
+[node name="Sprite2D" parent="Edible Objects/Trash6" index="1"]
 frame = 1
 
 [node name="Building2" parent="Edible Objects" instance=ExtResource("8_fwmut")]
@@ -245,7 +254,7 @@ collision_layer = 4
 walking_points = [NodePath("../NPC Points/Marker2D4"), NodePath("../NPC Points/Marker2D5"), NodePath("../NPC Points/Marker2D3")]
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" parent="Person2" index="0"]
+[node name="Sprite2D" parent="Person2" index="1"]
 texture = ExtResource("13_o3k4m")
 
 [node name="NPC Points" type="Node2D" parent="."]
@@ -289,20 +298,6 @@ z_index = -1
 position = Vector2(-1, -32)
 shape = SubResource("RectangleShape2D_ddcrx")
 
-[node name="SceneSwitcher" parent="." instance=ExtResource("15_s7n25")]
-position = Vector2(-334, 78)
-next_scene_path = "res://Scenes/level3.tscn"
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" parent="SceneSwitcher" index="0"]
-shape = SubResource("RectangleShape2D_ooxnb")
-
-[node name="Area2D" parent="SceneSwitcher" index="1"]
-position = Vector2(16, 0)
-
-[node name="CollisionShape2D" parent="SceneSwitcher/Area2D" index="0"]
-shape = SubResource("RectangleShape2D_kbut3")
-
 [editable path="FrogPlayer"]
 [editable path="FrogPlayer/Hurtbox"]
 [editable path="Edible Objects/Trash3"]
@@ -316,4 +311,3 @@ shape = SubResource("RectangleShape2D_kbut3")
 [editable path="Edible Objects/Trash10"]
 [editable path="Edible Objects/Trash6"]
 [editable path="Person2"]
-[editable path="SceneSwitcher"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://5irum84l24es"]
+[gd_scene load_steps=10 format=3 uid="uid://5irum84l24es"]
 
 [ext_resource type="PackedScene" uid="uid://dqd6iymxdv64g" path="res://Prefabs/edible_npc.tscn" id="1_5dv8p"]
 [ext_resource type="Texture2D" uid="uid://b3nt8vh0k8tbi" path="res://Textures/Level2/boy_walk_sheet.png" id="2_bvuuf"]
+[ext_resource type="AudioStream" uid="uid://c653d7psn5cst" path="res://Audio/SFX/scream1.wav" id="2_dxltv"]
+[ext_resource type="AudioStream" uid="uid://cgllb4bddtdye" path="res://Audio/SFX/scream2.wav" id="3_xjpp5"]
 
 [sub_resource type="Animation" id="Animation_7fnlj"]
 length = 0.001
@@ -52,18 +54,21 @@ size = Vector2(32, 67)
 [node name="Person1" instance=ExtResource("1_5dv8p")]
 MOVE_SPEED = 30.0
 frog_size_threshold = 3
+eat_sounds = Array[AudioStream]([ExtResource("2_dxltv"), ExtResource("3_xjpp5")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="0"]
+
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_bvuuf")
 hframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_vbrmo")
 }
 autoplay = "walk"
 
-[node name="Collider" parent="." index="2"]
+[node name="Collider" parent="." index="3"]
 position = Vector2(2, 22)
 shape = SubResource("CapsuleShape2D_xvein")
 disabled = true

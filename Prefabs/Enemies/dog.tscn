@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dujrbos6engjt"]
+[gd_scene load_steps=12 format=3 uid="uid://dujrbos6engjt"]
 
 [ext_resource type="PackedScene" uid="uid://bmgt76sguqsij" path="res://Prefabs/edible_enemy.tscn" id="1_cpql0"]
 [ext_resource type="Texture2D" uid="uid://4x10pw1u0a3q" path="res://Textures/dog_enemy_sheet.png" id="2_2epsf"]
+[ext_resource type="AudioStream" uid="uid://powdqkhe2umc" path="res://Audio/SFX/dog_bark.wav" id="2_hty6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6g7r7"]
 size = Vector2(47, 53)
@@ -244,11 +245,12 @@ radius = 23.3452
 MOVE_SPEED = 50.0
 CHASE_ANIM = "chase"
 NOTICE_ANIM = "surprise"
+ENEMY_SOUND = ExtResource("2_hty6y")
 frog_size_threshold = 3
+eat_sounds = Array[AudioStream]([ExtResource("2_hty6y")])
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_2epsf")
-hframes = 4
+[node name="AudioStreamPlayer2D" parent="." index="0"]
+volume_db = -12.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -256,7 +258,11 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="Collider" parent="." index="2"]
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_2epsf")
+hframes = 4
+
+[node name="Collider" parent="." index="3"]
 position = Vector2(8, 17)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_y2vnu")
@@ -265,10 +271,10 @@ shape = SubResource("CapsuleShape2D_y2vnu")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_6g7r7")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="4"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="5"]
 position = Vector2(-12, -10)
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="6"]
 collision_layer = 16
 collision_mask = 0
 input_pickable = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://0nmbl2026s1"]
+[gd_scene load_steps=6 format=3 uid="uid://0nmbl2026s1"]
 
 [ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_uvcf3"]
 [ext_resource type="Texture2D" uid="uid://bf2p3wxnsxn6j" path="res://Textures/Level2/TrashCan.png" id="2_eawqh"]
+[ext_resource type="AudioStream" uid="uid://bwgdrmce0ppjh" path="res://Audio/SFX/plastic.wav" id="2_houj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jloh"]
 size = Vector2(32, 23)
@@ -11,11 +12,12 @@ size = Vector2(40, 53)
 
 [node name="TrashCan" instance=ExtResource("1_uvcf3")]
 frog_size_threshold = 2
+eat_sounds = Array[AudioStream]([ExtResource("2_houj7")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_eawqh")
 
-[node name="Collider" parent="." index="1"]
+[node name="Collider" parent="." index="2"]
 position = Vector2(2, 14.5)
 shape = SubResource("RectangleShape2D_7jloh")
 

@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2mc4xtgel8je"]
+
+[ext_resource type="Texture2D" uid="uid://bsjuf64sqg60k" path="res://Textures/KODAK_Logo.png" id="1_oa302"]
+[ext_resource type="AudioStream" uid="uid://e2hkudluaido" path="res://Audio/Music/credits.ogg" id="2_qkxh6"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qkxh6")
+volume_db = -5.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 20.0
+offset_right = 134.0
+offset_bottom = 231.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_oa302")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -171.0
+offset_right = 144.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "[center]
+[wave amp=20 freq=5.0 connected=1]Krokak[/wave]
+
+Made for the [wave amp=20 freq=5.0 connected=1]GMTK Game Jam 2024 [/wave] with the theme 
+[b]\"Built to Scale\"[/b]
+
+Developed by [color=tomato]Clive Dev[/color]
+Art by [rainbow freq=1.0 sat=0.8 val=0.8]LecheFran [/rainbow]and [color=cyan]DummyDoodlez[/color]
+Music by [color=olive]Polly[/color]
+
+[/center]"

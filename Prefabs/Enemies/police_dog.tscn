@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://colfkxh7d5n4y"]
+[gd_scene load_steps=12 format=3 uid="uid://colfkxh7d5n4y"]
 
 [ext_resource type="PackedScene" uid="uid://bmgt76sguqsij" path="res://Prefabs/edible_enemy.tscn" id="1_vmatg"]
 [ext_resource type="Texture2D" uid="uid://brjy4ll1k4b8n" path="res://Textures/police_dog_walk.png" id="2_flbny"]
+[ext_resource type="AudioStream" uid="uid://powdqkhe2umc" path="res://Audio/SFX/dog_bark.wav" id="2_wvdfa"]
 [ext_resource type="Texture2D" uid="uid://du2pnhgcile17" path="res://Textures/batton.png" id="3_8muv1"]
 
 [sub_resource type="Animation" id="Animation_12ctt"]
@@ -108,11 +109,9 @@ size = Vector2(14.5749, 16.1943)
 scale = Vector2(1.235, 1.235)
 MOVE_SPEED = 25.0
 CHASE_ANIM = "chase"
+ENEMY_SOUND = ExtResource("2_wvdfa")
 frog_size_threshold = 3
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_flbny")
-hframes = 3
+eat_sounds = Array[AudioStream]([ExtResource("2_wvdfa")])
 
 [node name="Batton" type="Sprite2D" parent="." index="1"]
 position = Vector2(11, 0)
@@ -124,7 +123,11 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Collider" parent="." index="3"]
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_flbny")
+hframes = 3
+
+[node name="Collider" parent="." index="4"]
 position = Vector2(0.769231, 7.69231)
 shape = SubResource("CircleShape2D_kfb5w")
 
@@ -133,11 +136,11 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rvulj")
 debug_color = Color(0.914316, 0.290829, 0, 0.42)
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="5"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
 position = Vector2(1.19209e-07, -0.5)
 scale = Vector2(0.7, 0.55)
 
-[node name="Hitbox" parent="." index="6"]
+[node name="Hitbox" parent="." index="7"]
 collision_layer = 16
 collision_mask = 0
 
