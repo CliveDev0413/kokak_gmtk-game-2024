@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://diuelwnsrcp20"]
+[gd_scene load_steps=35 format=3 uid="uid://diuelwnsrcp20"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_ek6o4"]
 [ext_resource type="Texture2D" uid="uid://c1r10pq1dka1k" path="res://Textures/Level1/level1_bg.png" id="1_iowj5"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c8c8fsi6lw73i" path="res://Prefabs/Edible Objects/Level1/bush.tscn" id="8_a1uua"]
 [ext_resource type="PackedScene" uid="uid://dsowgtssqxnb1" path="res://Prefabs/Edible Objects/Level1/fruit.tscn" id="9_si366"]
 [ext_resource type="PackedScene" uid="uid://c1h6x6s2d1v5x" path="res://Prefabs/Edible Objects/Level1/plant.tscn" id="10_q32bf"]
-[ext_resource type="PackedScene" uid="uid://c7vqx1l6gpsu3" path="res://Prefabs/Edible Objects/Level1/worm2.tscn" id="11_ltd6h"]
 [ext_resource type="PackedScene" uid="uid://brftenpcg8nqn" path="res://Prefabs/Edible Objects/Level1/worm.tscn" id="12_44yon"]
 [ext_resource type="Script" path="res://Scripts/edible_object.gd" id="13_cukq1"]
 [ext_resource type="PackedScene" uid="uid://dl2ubghfgsay2" path="res://Prefabs/Edible Objects/Level1/watering_can.tscn" id="14_fgp4e"]
@@ -98,6 +97,7 @@ z_index = -1
 texture = ExtResource("3_toagl")
 
 [node name="Blankie" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(63, 14)
 scale = Vector2(0.751937, 0.706167)
 texture = ExtResource("4_f2sok")
@@ -246,10 +246,6 @@ position = Vector2(-277, 16)
 
 [node name="Sprite2D" parent="Edible Objects/Plant3" index="0"]
 position = Vector2(-2, -4)
-
-[node name="Worm" parent="Edible Objects" instance=ExtResource("11_ltd6h")]
-position = Vector2(-29, 134)
-scale = Vector2(0.4, 0.4)
 
 [node name="Worm2" parent="Edible Objects" instance=ExtResource("12_44yon")]
 position = Vector2(153, 80)

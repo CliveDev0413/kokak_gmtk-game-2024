@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ku38ladlqdiq"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_r8cba"]
+[ext_resource type="Texture2D" uid="uid://prv3qqkosgg6" path="res://Textures/Level2/Building1.png" id="2_8cbxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6rjb"]
+size = Vector2(174, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdc2y"]
+size = Vector2(208, 261)
+
+[node name="Building1" instance=ExtResource("1_r8cba")]
+frog_size_threshold = 5
+no_eat_collisions = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_8cbxn")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(15, 72.5)
+shape = SubResource("RectangleShape2D_x6rjb")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(11, -1.5)
+shape = SubResource("RectangleShape2D_hdc2y")

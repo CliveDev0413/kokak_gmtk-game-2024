@@ -1,16 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjocl3n3otduk"]
+[gd_scene load_steps=22 format=3 uid="uid://bjocl3n3otduk"]
 
+[ext_resource type="Texture2D" uid="uid://oao74w8ktuag" path="res://Textures/Level2/level2_BG_Sky.png" id="1_4d1k5"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_oyiel"]
+[ext_resource type="Texture2D" uid="uid://ddijgb4ynbxnf" path="res://Textures/Level2/level2_BG_Clouds.png" id="2_fkpt5"]
+[ext_resource type="Texture2D" uid="uid://da8ebgpwseoxk" path="res://Textures/Level2/level2_BG_Street.png" id="4_ml05f"]
+[ext_resource type="Texture2D" uid="uid://cr1qaws7n74sw" path="res://Textures/Level2/level2_BG_Buildings.png" id="5_m1yfd"]
+[ext_resource type="PackedScene" uid="uid://dfcew8cwx5vwq" path="res://Prefabs/Edible Objects/Level2/bench.tscn" id="6_4rsvo"]
 [ext_resource type="PackedScene" uid="uid://cmwd6dgoyjbqj" path="res://Prefabs/frog_player.tscn" id="6_31fy8"]
+[ext_resource type="PackedScene" uid="uid://dnsuwryjf1jde" path="res://Prefabs/Edible Objects/Level2/trash.tscn" id="7_ntm5c"]
+[ext_resource type="PackedScene" uid="uid://b821dggap57dc" path="res://Prefabs/Edible Objects/Level2/building_2.tscn" id="8_fwmut"]
+[ext_resource type="PackedScene" uid="uid://ku38ladlqdiq" path="res://Prefabs/Edible Objects/Level2/building_1.tscn" id="9_hgbbl"]
+[ext_resource type="PackedScene" uid="uid://lan6hrvnc415" path="res://Prefabs/Edible Objects/Level2/hydrant.tscn" id="10_oqj4x"]
+[ext_resource type="PackedScene" uid="uid://0nmbl2026s1" path="res://Prefabs/Edible Objects/Level2/trash_can.tscn" id="11_8ut54"]
+[ext_resource type="PackedScene" uid="uid://5irum84l24es" path="res://Prefabs/NPCs/person_1.tscn" id="12_fri7j"]
+[ext_resource type="Texture2D" uid="uid://c7vykf6e6qh4f" path="res://Textures/Level2/girl_walk_sheet.png" id="13_o3k4m"]
+[ext_resource type="PackedScene" uid="uid://colfkxh7d5n4y" path="res://Prefabs/Enemies/police_dog.tscn" id="14_002dv"]
+[ext_resource type="PackedScene" uid="uid://ds1kxrg01raf6" path="res://Overlaps/scene_switcher.tscn" id="15_s7n25"]
 
-[node name="Level2" type="Node2D"]
-y_sort_enabled = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqmq1"]
+size = Vector2(673, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6pbb"]
+size = Vector2(18, 466)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddcrx"]
+size = Vector2(638, 23.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooxnb"]
+size = Vector2(16, 201.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbut3"]
+size = Vector2(16, 201.5)
+
+[node name="Level2" type="Node2D" node_paths=PackedStringArray("scene_switcher")]
+script = ExtResource("1_oyiel")
+scene_switcher = NodePath("SceneSwitcher")
+
+[node name="BG_Sky" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_4d1k5")
+
+[node name="BG_Clouds" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_fkpt5")
+
+[node name="BG_Buildings" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-1, 8)
+texture = ExtResource("5_m1yfd")
+
+[node name="BG_Street" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("4_ml05f")
 
 [node name="FrogPlayer" parent="." instance=ExtResource("6_31fy8")]
-scale = Vector2(0.5, 0.5)
+position = Vector2(237, 87)
+scale = Vector2(0.4, 0.4)
+GROW_SIZE = Vector2(0.2, 0.2)
+INCREASE_THRESHOLD = 4
 metadata/_edit_group_ = true
 
 [node name="Camera2D" parent="FrogPlayer" index="4"]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 limit_left = -317
 limit_top = -177
 limit_right = 317
@@ -22,5 +73,247 @@ z_index = 1
 [node name="Edible Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Bench" parent="Edible Objects" instance=ExtResource("6_4rsvo")]
+position = Vector2(-179, 8)
+
+[node name="Bench2" parent="Edible Objects" instance=ExtResource("6_4rsvo")]
+position = Vector2(168, 8)
+
+[node name="Trash" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(265, 47)
+rotation = 0.584244
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash14" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(301, 35)
+rotation = -0.739873
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash9" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(281, 152)
+rotation = -2.42181
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash18" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-232, 53)
+rotation = -5.9961
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash7" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(56, 144)
+rotation = -0.73231
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash17" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(38, 153)
+rotation = 0.637896
+scale = Vector2(0.42, 0.42)
+
+[node name="Trash3" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(130, 43)
+rotation = -0.584745
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash3" index="0"]
+frame = 1
+
+[node name="Trash5" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(71, 150)
+rotation = -0.534687
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash5" index="0"]
+frame = 1
+
+[node name="Trash11" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-292, 35)
+rotation = -3.28144
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash11" index="0"]
+frame = 1
+
+[node name="Trash12" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-149, 156)
+rotation = -3.86565
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash12" index="0"]
+frame = 1
+
+[node name="Trash13" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-149, 156)
+rotation = -3.86565
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash13" index="0"]
+frame = 1
+
+[node name="Trash15" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-273, 149)
+rotation = -6.25147
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash15" index="0"]
+frame = 1
+
+[node name="Trash16" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(-273, 149)
+rotation = -6.25147
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash16" index="0"]
+frame = 1
+
+[node name="Trash8" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(242, 53)
+rotation = 0.941773
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash8" index="0"]
+frame = 1
+
+[node name="Trash10" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(242, 149)
+rotation = -1.81054
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash10" index="0"]
+frame = 1
+
+[node name="Trash6" parent="Edible Objects" instance=ExtResource("7_ntm5c")]
+position = Vector2(107, 160)
+rotation = 1.97565
+scale = Vector2(0.42, 0.42)
+
+[node name="Sprite2D" parent="Edible Objects/Trash6" index="0"]
+frame = 1
+
+[node name="Building2" parent="Edible Objects" instance=ExtResource("8_fwmut")]
+position = Vector2(-294, -141)
+
+[node name="Building1" parent="Edible Objects" instance=ExtResource("9_hgbbl")]
+position = Vector2(-124, -107)
+
+[node name="Building3" parent="Edible Objects" instance=ExtResource("8_fwmut")]
+position = Vector2(40, -125)
+scale = Vector2(0.905, 0.905)
+
+[node name="Building4" parent="Edible Objects" instance=ExtResource("9_hgbbl")]
+position = Vector2(210, -118)
+scale = Vector2(1.115, 1.115)
+
+[node name="Hydrant" parent="Edible Objects" instance=ExtResource("10_oqj4x")]
+position = Vector2(279, 21)
+scale = Vector2(0.5, 0.5)
+
+[node name="Hydrant2" parent="Edible Objects" instance=ExtResource("10_oqj4x")]
+position = Vector2(-248, 139)
+scale = Vector2(0.5, 0.5)
+
+[node name="TrashCan" parent="Edible Objects" instance=ExtResource("11_8ut54")]
+position = Vector2(-105, 21)
+scale = Vector2(0.6, 0.6)
+
+[node name="TrashCan3" parent="Edible Objects" instance=ExtResource("11_8ut54")]
+position = Vector2(231, 24)
+scale = Vector2(0.6, 0.6)
+
+[node name="TrashCan2" parent="Edible Objects" instance=ExtResource("11_8ut54")]
+position = Vector2(90, 128)
+scale = Vector2(0.6, 0.6)
+
+[node name="PoliceDog2" parent="." instance=ExtResource("14_002dv")]
+position = Vector2(101, 18)
+
+[node name="PoliceDog3" parent="." instance=ExtResource("14_002dv")]
+position = Vector2(-126, 33)
+
+[node name="Person1" parent="." node_paths=PackedStringArray("walking_points") instance=ExtResource("12_fri7j")]
+position = Vector2(-245, 26)
+collision_layer = 4
+walking_points = [NodePath("../NPC Points/Marker2D"), NodePath("../NPC Points/Marker2D6"), NodePath("../NPC Points/Marker2D2")]
+
+[node name="Person3" parent="." node_paths=PackedStringArray("walking_points") instance=ExtResource("12_fri7j")]
+position = Vector2(-53, 27)
+collision_layer = 4
+walking_points = [NodePath("../NPC Points/Marker2D"), NodePath("../NPC Points/Marker2D6"), NodePath("../NPC Points/Marker2D2")]
+
+[node name="Person2" parent="." node_paths=PackedStringArray("walking_points") instance=ExtResource("12_fri7j")]
+position = Vector2(-123, 130)
+collision_layer = 4
+walking_points = [NodePath("../NPC Points/Marker2D4"), NodePath("../NPC Points/Marker2D5"), NodePath("../NPC Points/Marker2D3")]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Person2" index="0"]
+texture = ExtResource("13_o3k4m")
+
+[node name="NPC Points" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="NPC Points"]
+position = Vector2(236, 56)
+
+[node name="Marker2D6" type="Marker2D" parent="NPC Points"]
+position = Vector2(-15, 58)
+
+[node name="Marker2D2" type="Marker2D" parent="NPC Points"]
+position = Vector2(-286, 59)
+
+[node name="Marker2D4" type="Marker2D" parent="NPC Points"]
+position = Vector2(233, 142)
+
+[node name="Marker2D5" type="Marker2D" parent="NPC Points"]
+position = Vector2(-11, 160)
+
+[node name="Marker2D3" type="Marker2D" parent="NPC Points"]
+position = Vector2(-304, 157)
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Border1" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border1"]
+position = Vector2(-16.5, 190)
+shape = SubResource("RectangleShape2D_pqmq1")
+
+[node name="Border2" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border2"]
+position = Vector2(329, -31)
+shape = SubResource("RectangleShape2D_h6pbb")
+
+[node name="Border3" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border3"]
+z_index = -1
+position = Vector2(-1, -32)
+shape = SubResource("RectangleShape2D_ddcrx")
+
+[node name="SceneSwitcher" parent="." instance=ExtResource("15_s7n25")]
+position = Vector2(-334, 78)
+next_scene_path = "res://Scenes/level3.tscn"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="SceneSwitcher" index="0"]
+shape = SubResource("RectangleShape2D_ooxnb")
+
+[node name="Area2D" parent="SceneSwitcher" index="1"]
+position = Vector2(16, 0)
+
+[node name="CollisionShape2D" parent="SceneSwitcher/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_kbut3")
+
 [editable path="FrogPlayer"]
 [editable path="FrogPlayer/Hurtbox"]
+[editable path="Edible Objects/Trash3"]
+[editable path="Edible Objects/Trash5"]
+[editable path="Edible Objects/Trash11"]
+[editable path="Edible Objects/Trash12"]
+[editable path="Edible Objects/Trash13"]
+[editable path="Edible Objects/Trash15"]
+[editable path="Edible Objects/Trash16"]
+[editable path="Edible Objects/Trash8"]
+[editable path="Edible Objects/Trash10"]
+[editable path="Edible Objects/Trash6"]
+[editable path="Person2"]
+[editable path="SceneSwitcher"]

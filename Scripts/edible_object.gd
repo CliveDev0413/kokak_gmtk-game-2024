@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var frog_size_threshold: int = 1;
+@export var no_eat_collisions: bool = false;
 @onready var outline_shader = preload("res://Shaders/outline.gdshader");
 
 var is_mouse_hovering: bool = false;
@@ -15,6 +16,10 @@ func _physics_process(delta: float) -> void:
 	if frog.frog_size >= frog_size_threshold:
 		if Input.is_action_just_pressed("left_click") and is_mouse_hovering:
 			eaten = true;
+			
+			if no_eat_collisions:
+				$Collider.queue_free();
+				
 			await get_tree().create_timer(.3).timeout;
 			
 			var tween = get_tree().create_tween();

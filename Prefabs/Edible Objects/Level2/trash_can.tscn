@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://0nmbl2026s1"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_uvcf3"]
+[ext_resource type="Texture2D" uid="uid://bf2p3wxnsxn6j" path="res://Textures/Level2/TrashCan.png" id="2_eawqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jloh"]
+size = Vector2(32, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmwji"]
+size = Vector2(40, 53)
+
+[node name="TrashCan" instance=ExtResource("1_uvcf3")]
+frog_size_threshold = 2
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_eawqh")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(2, 14.5)
+shape = SubResource("RectangleShape2D_7jloh")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_hmwji")

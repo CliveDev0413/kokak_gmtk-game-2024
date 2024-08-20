@@ -8,6 +8,8 @@ enum EnemyStates {
 var state: EnemyStates;
 
 @export var MOVE_SPEED: float = 100.0;
+@export var CHASE_ANIM: String;
+@export var NOTICE_ANIM: String;
 
 @onready var animationPlayer = $AnimationPlayer;
 @onready var sprite = $Sprite2D;
@@ -22,7 +24,8 @@ func _physics_process(delta: float) -> void:
 	super(delta);
 	
 	if eaten:
-		$Hitbox.queue_free();
+		if $Hitbox != null:
+			$Hitbox.queue_free();
 		eaten = false;
 	
 	match state:
@@ -38,7 +41,8 @@ func idle():
 	pass;
 
 func chase_player() -> void:
-	animationPlayer.play("chase");
+	if CHASE_ANIM:
+		animationPlayer.play(CHASE_ANIM);
 	
 	var direction = (frog.global_position - global_position).normalized();
 	
@@ -56,6 +60,11 @@ func _on_visible_on_screen() -> void:
 	if !is_active:
 		is_active = true;
 		$VisibleOnScreenEnabler2D.queue_free();
-		animationPlayer.play("surprise");
-		await animationPlayer.animation_finished;
+		
+		if NOTICE_ANIM:
+			animationPlayer.play(NOTICE_ANIM);
+			await animationPlayer.animation_finished;
+		else:
+			await get_tree().create_timer(2).timeout;
+		
 		state = EnemyStates.CHASE;

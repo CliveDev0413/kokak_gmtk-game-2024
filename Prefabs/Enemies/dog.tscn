@@ -242,6 +242,8 @@ radius = 23.3452
 
 [node name="Dog" instance=ExtResource("1_cpql0")]
 MOVE_SPEED = 50.0
+CHASE_ANIM = "chase"
+NOTICE_ANIM = "surprise"
 frog_size_threshold = 3
 
 [node name="Sprite2D" parent="." index="0"]

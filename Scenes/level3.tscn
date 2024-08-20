@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://djnuxtpeh54un"]
+
+[ext_resource type="PackedScene" uid="uid://cmwd6dgoyjbqj" path="res://Prefabs/frog_player.tscn" id="6_q4ktc"]
+
+[node name="Level3" type="Node2D"]
+y_sort_enabled = true
+
+[node name="FrogPlayer" parent="." instance=ExtResource("6_q4ktc")]
+scale = Vector2(0.4, 0.4)
+GROW_SIZE = Vector2(0.2, 0.2)
+INCREASE_THRESHOLD = 4
+metadata/_edit_group_ = true
+
+[node name="Camera2D" parent="FrogPlayer" index="4"]
+zoom = Vector2(2, 2)
+limit_left = -317
+limit_top = -177
+limit_right = 317
+limit_bottom = 177
+
+[node name="Hurtbox" parent="FrogPlayer" index="6"]
+z_index = 1
+
+[node name="Edible Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[editable path="FrogPlayer"]
+[editable path="FrogPlayer/Hurtbox"]

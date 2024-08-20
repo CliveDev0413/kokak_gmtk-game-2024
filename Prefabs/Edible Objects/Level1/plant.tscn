@@ -7,7 +7,7 @@
 radius = 10.198
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agdkm"]
-size = Vector2(22, 27)
+size = Vector2(27, 32)
 
 [node name="Plant" instance=ExtResource("1_0ahg2")]
 frog_size_threshold = 2
@@ -21,5 +21,4 @@ position = Vector2(1, 6)
 shape = SubResource("CircleShape2D_u2evk")
 
 [node name="EatCollision" parent="EatArea" index="0"]
-position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_agdkm")

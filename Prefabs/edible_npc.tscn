@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqd6iymxdv64g"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_vmeii"]
+
+[node name="EdibleNPC" type="CharacterBody2D" groups=["edible_objects"]]
+y_sort_enabled = true
+script = ExtResource("1_vmeii")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+
+[node name="EatArea" type="Area2D" parent="."]
+z_index = -1
+collision_layer = 8
+collision_mask = 0
+
+[node name="EatCollision" type="CollisionShape2D" parent="EatArea"]
+debug_color = Color(0.684711, 0.501138, 1.15514e-06, 0.42)
+
+[connection signal="mouse_entered" from="EatArea" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EatArea" to="." method="_on_mouse_exited"]

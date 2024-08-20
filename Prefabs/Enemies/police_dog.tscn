@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://colfkxh7d5n4y"]
+
+[ext_resource type="PackedScene" uid="uid://bmgt76sguqsij" path="res://Prefabs/edible_enemy.tscn" id="1_vmatg"]
+[ext_resource type="Texture2D" uid="uid://brjy4ll1k4b8n" path="res://Textures/police_dog_walk.png" id="2_flbny"]
+[ext_resource type="Texture2D" uid="uid://du2pnhgcile17" path="res://Textures/batton.png" id="3_8muv1"]
+
+[sub_resource type="Animation" id="Animation_12ctt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Batton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dcby8"]
+resource_name = "chase"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Batton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e27eb"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Batton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqcs3"]
+_data = {
+"RESET": SubResource("Animation_12ctt"),
+"chase": SubResource("Animation_dcby8"),
+"idle": SubResource("Animation_e27eb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfb5w"]
+radius = 6.19267
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvulj"]
+size = Vector2(30, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsgso"]
+size = Vector2(14.5749, 16.1943)
+
+[node name="PoliceDog" instance=ExtResource("1_vmatg")]
+scale = Vector2(1.235, 1.235)
+MOVE_SPEED = 25.0
+CHASE_ANIM = "chase"
+frog_size_threshold = 3
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_flbny")
+hframes = 3
+
+[node name="Batton" type="Sprite2D" parent="." index="1"]
+position = Vector2(11, 0)
+texture = ExtResource("3_8muv1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_aqcs3")
+}
+autoplay = "idle"
+
+[node name="Collider" parent="." index="3"]
+position = Vector2(0.769231, 7.69231)
+shape = SubResource("CircleShape2D_kfb5w")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_rvulj")
+debug_color = Color(0.914316, 0.290829, 0, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="5"]
+position = Vector2(1.19209e-07, -0.5)
+scale = Vector2(0.7, 0.55)
+
+[node name="Hitbox" parent="." index="6"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+z_index = -1
+position = Vector2(-0.809717, -4.8583)
+shape = SubResource("RectangleShape2D_lsgso")
+debug_color = Color(0.886494, 0.000292057, 0.804692, 0.42)
+
+[editable path="Hitbox"]

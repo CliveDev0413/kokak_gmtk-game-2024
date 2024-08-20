@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfcew8cwx5vwq"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_p4hmy"]
+[ext_resource type="Texture2D" uid="uid://bvcppnsnunacn" path="res://Textures/Level2/Bench.png" id="2_44854"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qyigy"]
+radius = 14.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmcmx"]
+size = Vector2(80, 51)
+
+[node name="Bench" instance=ExtResource("1_p4hmy")]
+frog_size_threshold = 3
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.40625, 1)
+texture = ExtResource("2_44854")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(0, 12)
+rotation = 17.2788
+shape = SubResource("CapsuleShape2D_qyigy")
+
+[node name="EatCollision" parent="EatArea" index="0"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_rmcmx")

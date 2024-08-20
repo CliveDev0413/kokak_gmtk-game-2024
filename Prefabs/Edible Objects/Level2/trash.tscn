@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnsuwryjf1jde"]
+
+[ext_resource type="PackedScene" uid="uid://ckm05o2elihja" path="res://Prefabs/edible_object.tscn" id="1_4cctt"]
+[ext_resource type="Texture2D" uid="uid://13ng6ilpvclh" path="res://Textures/Level2/trash_sheet.png" id="2_ojj3o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7v4qi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx12f"]
+size = Vector2(56, 54)
+
+[node name="Trash" instance=ExtResource("1_4cctt")]
+z_index = -1
+
+[node name="Sprite2D" parent="." index="0"]
+y_sort_enabled = false
+texture = ExtResource("2_ojj3o")
+hframes = 2
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource("CircleShape2D_7v4qi")
+disabled = true
+
+[node name="EatCollision" parent="EatArea" index="0"]
+shape = SubResource("RectangleShape2D_rx12f")

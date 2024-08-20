@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 @export var MOVE_SPEED: float = 300;
+@export var JUMP_DISTANCE: float = 100.0;
 @export var GROW_SIZE: Vector2 = Vector2(0.3, 0.3);
+@export var INCREASE_THRESHOLD: int = 3;
+@export var THRESHOLD_ADDER: int = 2;
 
 @onready var sprite: Sprite2D = $Sprite2D;
 @onready var line: Line2D = $Line2D;
@@ -14,7 +17,6 @@ extends CharacterBody2D
 var frog_size: int = 1;
 
 ## amount of objects to eat before sizing up
-var size_increase_threshold: int = 3;
 var objects_eaten: int;
 var is_hovering_object: bool = false;
 
@@ -40,7 +42,7 @@ func frog_animate() -> void:
 	
 func frog_jump_detect(delta: float) -> void:
 	var pos = get_global_mouse_position() - position;
-	if  pos.x < 100 and pos.x > -100 and pos.y < 100 and pos.y > -100:
+	if  pos.x < JUMP_DISTANCE and pos.x > -JUMP_DISTANCE and pos.y < JUMP_DISTANCE and pos.y > -JUMP_DISTANCE:
 		
 		if !is_hovering_object:
 			Input.set_custom_mouse_cursor(jumpCursor, Input.CURSOR_ARROW);
@@ -108,11 +110,15 @@ func ate_object(object: Node2D) -> void:
 	object.queue_free();
 	velocity = Vector2.ZERO;
 	
-	if objects_eaten % size_increase_threshold == 0:
+	if objects_eaten % INCREASE_THRESHOLD == 0:
 		frog_size += 1;
 		scale += GROW_SIZE;
-		$Camera2D.zoom -= GROW_SIZE;
-		size_increase_threshold += 2;
+		
+		if $Camera2D.zoom - GROW_SIZE > Vector2(1, 1):
+			$Camera2D.zoom -= GROW_SIZE;
+			
+		INCREASE_THRESHOLD += THRESHOLD_ADDER;
+		JUMP_DISTANCE += 50;
 		objects_eaten = 0;
 		print(frog_size);
 	pass;
