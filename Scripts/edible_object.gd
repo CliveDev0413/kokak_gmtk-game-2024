@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			if no_eat_collisions:
 				$Collider.queue_free();
 				
-			await get_tree().create_timer(.3).timeout;
+			await get_tree().create_timer(20 * delta).timeout;
 			
 			var tween = get_tree().create_tween();
 			tween.tween_property(self, "global_position", frog.sprite.global_position, .3);

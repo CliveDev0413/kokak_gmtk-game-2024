@@ -1,10 +1,10 @@
 [gd_scene load_steps=41 format=3 uid="uid://cmwd6dgoyjbqj"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_1eshp"]
+[ext_resource type="Script" uid="uid://bobuk2ocd3gv0" path="res://Scripts/player.gd" id="1_1eshp"]
 [ext_resource type="Texture2D" uid="uid://bdhi7ixgoynid" path="res://Textures/frog_player_sheet.png" id="2_k820q"]
 [ext_resource type="AudioStream" uid="uid://cw7sb0x0htuq" path="res://Audio/SFX/frog_jump1.wav" id="2_rutat"]
 [ext_resource type="AudioStream" uid="uid://ibx4hw5n5mxj" path="res://Audio/SFX/frog_jump2.wav" id="3_eyklj"]
-[ext_resource type="Script" path="res://Scripts/camera_peak.gd" id="3_fhlyo"]
+[ext_resource type="Script" uid="uid://g2vftdcibug7" path="res://Scripts/camera_peak.gd" id="3_fhlyo"]
 [ext_resource type="AudioStream" uid="uid://og8eslks0m6j" path="res://Audio/SFX/frog_jump3.wav" id="4_8gmal"]
 [ext_resource type="PackedScene" uid="uid://b3qd3ntd8tc6r" path="res://Overlaps/hurtbox.tscn" id="4_ln3ql"]
 [ext_resource type="AudioStream" uid="uid://bmke44lvi3285" path="res://Audio/SFX/frog_slurp.wav" id="5_ambwc"]
@@ -345,18 +345,18 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0ve0"]
 _data = {
-"RESET": SubResource("Animation_4fir5"),
-"awa": SubResource("Animation_5njde"),
-"dead": SubResource("Animation_t1o0j"),
-"eat_back": SubResource("Animation_0xfg4"),
-"eat_front": SubResource("Animation_vrwau"),
-"eat_left": SubResource("Animation_8fiiw"),
-"eat_right": SubResource("Animation_7mgey"),
-"idle_back": SubResource("Animation_rn0ou"),
-"idle_front": SubResource("Animation_nt1wy"),
-"idle_left": SubResource("Animation_2olrl"),
-"idle_right": SubResource("Animation_3rem7"),
-"jump": SubResource("Animation_8p21p")
+&"RESET": SubResource("Animation_4fir5"),
+&"awa": SubResource("Animation_5njde"),
+&"dead": SubResource("Animation_t1o0j"),
+&"eat_back": SubResource("Animation_0xfg4"),
+&"eat_front": SubResource("Animation_vrwau"),
+&"eat_left": SubResource("Animation_8fiiw"),
+&"eat_right": SubResource("Animation_7mgey"),
+&"idle_back": SubResource("Animation_rn0ou"),
+&"idle_front": SubResource("Animation_nt1wy"),
+&"idle_left": SubResource("Animation_2olrl"),
+&"idle_right": SubResource("Animation_3rem7"),
+&"jump": SubResource("Animation_8p21p")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3oc0c"]
@@ -440,7 +440,7 @@ bus = &"Sounds"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_m0ve0")
+&"": SubResource("AnimationLibrary_m0ve0")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

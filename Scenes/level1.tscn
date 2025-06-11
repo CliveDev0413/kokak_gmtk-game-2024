@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://diuelwnsrcp20"]
 
-[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_ek6o4"]
+[ext_resource type="Script" uid="uid://bty3gpqqks0gy" path="res://Scripts/LevelManager.gd" id="1_ek6o4"]
 [ext_resource type="Texture2D" uid="uid://c1r10pq1dka1k" path="res://Textures/Level1/level1_bg.png" id="1_iowj5"]
 [ext_resource type="AudioStream" uid="uid://thwf2prh2hx4" path="res://Audio/Music/lvl1.ogg" id="2_4rnk3"]
 [ext_resource type="Texture2D" uid="uid://doav73v3fnpkc" path="res://Textures/Level1/level1_bg_grass.png" id="2_pwcbf"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dsowgtssqxnb1" path="res://Prefabs/Edible Objects/Level1/fruit.tscn" id="9_si366"]
 [ext_resource type="PackedScene" uid="uid://c1h6x6s2d1v5x" path="res://Prefabs/Edible Objects/Level1/plant.tscn" id="10_q32bf"]
 [ext_resource type="PackedScene" uid="uid://brftenpcg8nqn" path="res://Prefabs/Edible Objects/Level1/worm.tscn" id="12_44yon"]
-[ext_resource type="Script" path="res://Scripts/edible_object.gd" id="13_cukq1"]
+[ext_resource type="Script" uid="uid://cwqsuiqrn8ysr" path="res://Scripts/edible_object.gd" id="13_cukq1"]
 [ext_resource type="PackedScene" uid="uid://dl2ubghfgsay2" path="res://Prefabs/Edible Objects/Level1/watering_can.tscn" id="14_fgp4e"]
 [ext_resource type="Texture2D" uid="uid://bn8le600py1je" path="res://Textures/Level1/fence-sheet.png" id="14_q2t12"]
 [ext_resource type="Texture2D" uid="uid://d2mubfqmpv03p" path="res://Textures/Level1/fence_side_sheet.png" id="15_4d1rk"]

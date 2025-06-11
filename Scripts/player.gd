@@ -96,14 +96,14 @@ func release_tongue(delta: float) -> void:
 	line.add_point(sprite.position, 0)
 	
 	for i in range(1, max_points):
-		await get_tree().create_timer(.001).timeout;
+		await get_tree().create_timer(.001 * delta).timeout;
 		line.add_point(Vector2(sprite.position.x + i * pos.x, sprite.position.y + i * pos.y), i);
 	
 	line.set_point_position(max_points - 1, last_mouse_pos);
 		
 	Global.is_frog_tongue_out = true;
 	
-	await get_tree().create_timer(.2).timeout;
+	await get_tree().create_timer(.2 * delta).timeout;
 	
 	retract_tongue(delta);
 
@@ -113,7 +113,7 @@ func retract_tongue(delta: float) -> void:
 	play_sfx(SLURP_SOUND, -10, rng.randf_range(.9, 1.5));
 	
 	for i in range(0, line.get_point_count()):
-		await get_tree().create_timer(.001).timeout;
+		await get_tree().create_timer(.001 * delta).timeout;
 		line.remove_point(value);
 		value -= 1;
 		

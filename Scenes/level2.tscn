@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bjocl3n3otduk"]
 
 [ext_resource type="Texture2D" uid="uid://oao74w8ktuag" path="res://Textures/Level2/level2_BG_Sky.png" id="1_4d1k5"]
-[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_oyiel"]
+[ext_resource type="Script" uid="uid://bty3gpqqks0gy" path="res://Scripts/LevelManager.gd" id="1_oyiel"]
 [ext_resource type="AudioStream" uid="uid://n1dameqi10ov" path="res://Audio/SFX/city_ambience.ogg" id="2_bsfui"]
 [ext_resource type="AudioStream" uid="uid://cs74nluc41nu7" path="res://Audio/Music/lvl2.ogg" id="2_f23du"]
 [ext_resource type="Texture2D" uid="uid://ddijgb4ynbxnf" path="res://Textures/Level2/level2_BG_Clouds.png" id="2_fkpt5"]

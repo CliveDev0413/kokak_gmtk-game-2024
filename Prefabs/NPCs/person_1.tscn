@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vbrmo"]
 _data = {
-"RESET": SubResource("Animation_7fnlj"),
-"walk": SubResource("Animation_2jpe4")
+&"RESET": SubResource("Animation_7fnlj"),
+&"walk": SubResource("Animation_2jpe4")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvein"]

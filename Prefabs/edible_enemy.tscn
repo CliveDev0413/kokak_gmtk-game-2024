@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmgt76sguqsij"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ehj22"]
+[ext_resource type="Script" uid="uid://b8bww2f8t3fd3" path="res://Scripts/enemy.gd" id="1_ehj22"]
 [ext_resource type="PackedScene" uid="uid://n7jsemte2626" path="res://Overlaps/hitbox.tscn" id="2_js57b"]
 
 [node name="EdibleEnemy" type="CharacterBody2D" groups=["edible_objects"]]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://djnuxtpeh54un"]
 
-[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_s47f0"]
+[ext_resource type="Script" uid="uid://bty3gpqqks0gy" path="res://Scripts/LevelManager.gd" id="1_s47f0"]
 [ext_resource type="AudioStream" uid="uid://bbvp58i7yf3a4" path="res://Audio/Music/lvl3.ogg" id="2_5ehnk"]
 [ext_resource type="Texture2D" uid="uid://bfyqy0cyuhw3o" path="res://Textures/blue_bg.png" id="2_qaas3"]
 [ext_resource type="PackedScene" uid="uid://cmwd6dgoyjbqj" path="res://Prefabs/frog_player.tscn" id="6_q4ktc"]

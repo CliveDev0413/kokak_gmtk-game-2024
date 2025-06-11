@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckm05o2elihja"]
 
-[ext_resource type="Script" path="res://Scripts/edible_object.gd" id="1_327ca"]
+[ext_resource type="Script" uid="uid://cwqsuiqrn8ysr" path="res://Scripts/edible_object.gd" id="1_327ca"]
 
 [node name="EdibleObject" type="StaticBody2D" groups=["edible_objects"]]
 script = ExtResource("1_327ca")

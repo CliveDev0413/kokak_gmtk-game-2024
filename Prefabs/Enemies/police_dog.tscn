@@ -91,9 +91,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqcs3"]
 _data = {
-"RESET": SubResource("Animation_12ctt"),
-"chase": SubResource("Animation_dcby8"),
-"idle": SubResource("Animation_e27eb")
+&"RESET": SubResource("Animation_12ctt"),
+&"chase": SubResource("Animation_dcby8"),
+&"idle": SubResource("Animation_e27eb")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfb5w"]

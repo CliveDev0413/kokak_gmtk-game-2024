@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7ouht768830q"]
 
 [ext_resource type="AudioStream" uid="uid://ca7snlv42mdjd" path="res://Audio/Music/loading.ogg" id="1_itrpr"]
-[ext_resource type="Script" path="res://Prefabs/in_between.gd" id="1_xuakf"]
+[ext_resource type="Script" uid="uid://dj5lacq2oeqkn" path="res://Prefabs/in_between.gd" id="1_xuakf"]
 
 [node name="In-Between" type="Control"]
 layout_mode = 3

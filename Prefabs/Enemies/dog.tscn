@@ -232,10 +232,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_scurf"]
 _data = {
-"RESET": SubResource("Animation_t0yuh"),
-"chase": SubResource("Animation_ysdr1"),
-"idle": SubResource("Animation_35tj3"),
-"surprise": SubResource("Animation_dnfgi")
+&"RESET": SubResource("Animation_t0yuh"),
+&"chase": SubResource("Animation_ysdr1"),
+&"idle": SubResource("Animation_35tj3"),
+&"surprise": SubResource("Animation_dnfgi")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4p6m"]

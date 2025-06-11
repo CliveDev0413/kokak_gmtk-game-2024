@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ds1kxrg01raf6"]
 
-[ext_resource type="Script" path="res://Scripts/scene_switcher.gd" id="1_u7mh5"]
+[ext_resource type="Script" uid="uid://gug0n6hkvi54" path="res://Scripts/scene_switcher.gd" id="1_u7mh5"]
 
 [node name="SceneSwitcher" type="StaticBody2D"]
 collision_mask = 0
