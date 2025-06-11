@@ -14,7 +14,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if slide == pics_to_show.size() - 1:
-		print("u can transition!");
 		if Input.is_action_just_pressed("space"):
 			change_scene();
 	elif slide != pics_to_show.size() - 1:
